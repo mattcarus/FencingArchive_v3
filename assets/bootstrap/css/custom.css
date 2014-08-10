@@ -1,0 +1,14 @@
+@charset "utf-8";
+/* CSS Document */
+
+.unstyled-list {
+	list-style-type: none;
+	margin: 0px;
+	padding-left: 10px;
+}
+
+.sparkline {
+	fill: none;
+	stroke: #000;
+	stroke-width: 0.5px;
+}

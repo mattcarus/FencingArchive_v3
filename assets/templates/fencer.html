@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title></title>
+    
+    <link href="http://v3.fencingarchive.net/assets/bootstrap/bootstrap-3.1.1-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://v3.fencingarchive.net/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://v3.fencingarchive.net/assets/bootstrap/css/bootstrap-timeline.css" rel="stylesheet">
+    <link href="http://v3.fencingarchive.net/assets/bootstrap/css/custom.css" rel="stylesheet">
+    
+	<script src="http://v3.fencingarchive.net/assets/jquery/js/jquery-1.11.0.min.js"></script>
+	<script src="http://v3.fencingarchive.net/assets/bootstrap/bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+    <script src="//d3js.org/d3.v3.min.js"></script>
+
+	<script src='http://mattcarus.co.uk/track.js' type="text/javascript"></script>
+</head>
+
+<body role="document">
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">FencingArchive</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Edit <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Merge Fencer Profiles</a></li>
+                <li><a href="#">Add/Change Fencer Image</a></li>
+                <li><a href="#">Edit Profile</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="navbar-form navbar-right" role="form">
+            <div class="form-group">
+              <input type="text" placeholder="Search" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Go!</button>
+          </form>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    
+    <div class="container theme-showcase" role="main">
+
+      <div class="page-header">
+        <table width="100%">
+          <tr><td><h1><span id="name"><!-- Fencer Name --></span></h1></td><td align="right"><h1><span id="popularity"></span></h1></td></tr>
+        </table>
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <img class="img-responsive" alt="..." id="fencer_image" />
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Clubs</h3>
+            </div>
+            <div class="panel-body">
+              <ul class="unstyled-list" id="club_list"><!-- Club List --></ul>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Current Ranking</h3>
+            </div>
+            <div class="panel-body">
+              <ul class="unstyled-list" id="ranking_list"><!-- Ranking List --></ul>
+            </div>
+          </div>
+        </div><!-- /.col-sm-4 -->
+        <div class="col-sm-9">
+          <!-- Timeline (http://bootsnipp.com/snippets/featured/timeline-responsive) -->
+            <ul class="timeline" id="fencer-timeline">
+            </ul>
+
+		</div>
+      </div>
+      
+      
+    </div> <!-- /container -->
+
+
+  <div id="name"></div>
+    <script>
+	  $.ajax({
+	    type: "GET",
+		url: "http://api.fencingarchive.net/fencer/{{ id }}"
+	  }).done( function(xml){
+		console.log("Loaded " + $(xml).find('name').text());
+		
+		$('#name').html('<br />' + $(xml).find('surname').text() + ', ' + $(xml).find('forename').text() + ' (' + $(xml).find('nationality').text() + ')');
+
+		$(xml).find('clubs').find('node').each(function(){
+			  console.log('Club ID: ' + $(this).text());
+			  $.ajax({
+				type: "GET",
+				url: "http://api.fencingarchive.net/club/" + $(this).text()
+			  }).done( function(xml){
+				console.log('Club Name: ' + $(xml).find('club_name').text());
+				$('#club_list').append('<li><a href="http://v3.fencingarchive.net/club/' + $(xml).find('club_id').text() + '">' + $(xml).find('club_name').text() + '</a></li>');
+			  });
+		});
+		
+		$('#fencer_image').attr('src', $(xml).find('image_url').text());
+
+		$('#ranking_list').append('<li>ELO:' + $(xml).find('elo').text() + '</li>');
+
+		$i = 0;
+		$(xml).find('results').find('node').each(function(){
+			  if ( $i%2 ) { alignment = 'right' } else { alignment = 'left' }
+			  
+			  competitionName = $(this).find('name').text() + ' ' + $(this).find('category').text() + ' (' + $(this).find('weapon').text() + ')';
+			  
+			  addTimelineElement($(this).find('cid').text(), alignment, '#fencer-timeline', competitionName, $(this).find('position').text(), 'Pos: ' + $(this).find('position').text(), $(this).find('date').text(), 'glyphicon-check');
+			  $i++;
+			}
+		);
+				
+		var popularity = [];
+		var i = 0;
+		
+		$(xml).find('popularity').find('node').each(function(){
+			//var tmp = {};
+			//tmp[i] = $(this).text();
+			popularity.push({ index: i, val: $(this).text() });
+			i++;
+		});
+		console.log(JSON.stringify(popularity));
+		sparkline('#popularity', popularity, 100, 25)
+	  });
+
+      function addTimelineElement(id, alignment, element, heading, position, content, timeago, glyphicon)
+	  {
+		  colour = 'default';
+		  if ( position == '1' ) { colour = 'gold' }
+		  if ( position == '2' ) { colour = 'silver' }
+		  if ( position == '3' ) { colour = 'bronze' }
+
+		  var timelineAlignment = '';
+		  if ( alignment == 'right' )
+		  {
+			  timelineAlignment = ' class="timeline-inverted"';
+		  }
+		  
+		  var timelineHtml = '<li' + timelineAlignment + '><div class="timeline-badge ' + colour + '"><i class="glyphicon"></i></div><div class="timeline-panel"><div class="timeline-heading"><table><tr><td><span style="font-size: 60px">' + position + '</span></td><td><span style="font-size: 20px"><a href="http://v3.fencingarchive.net/competition/' + id + '">' + heading + '</a></span><br /><small class="text-muted"><i class="glyphicon glyphicon-calendar"></i> ' + timeago + '</small></td></tr></table></div><div class="timeline-body"></div></div></li>';
+		  
+	      $('#fencer-timeline').append(timelineHtml);
+	  }
+	  
+		function sparkline(elemId, data, width, height) {
+		  var x = d3.scale.linear().range([0, width]);
+		  var y = d3.scale.linear().range([height, 0]);
+		  
+		  var line = d3.svg.line()
+             .x(function(d) { return x(d.index); })
+             .y(function(d) { return y(d.val); });
+
+		  var dataMax = 0;
+		  data.forEach(function(d) {
+			if ( d.val > dataMax ) {
+			  dataMax = d.val;
+			}
+		  });
+		  
+		  console.log(dataMax);
+			 
+		  data.forEach(function(d) {
+			d.index = d.index;
+			d.val = (d.val * height) / dataMax;
+		  });
+		  
+		  x.domain(d3.extent(data, function(d) { return d.index; }));
+		  y.domain(d3.extent(data, function(d) { return d.val; }));
+		
+		  d3.select(elemId)
+			.append('svg')
+			.attr('width', width)
+			.attr('height', height)
+			.append('path')
+			.datum(data)
+			.attr('class', 'sparkline')
+			.attr('d', line);
+		}
+
+    </script>
+</body>
+</html>

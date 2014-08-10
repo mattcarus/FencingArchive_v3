@@ -1,0 +1,25 @@
+@CHARSET "ISO-8859-1";
+body {
+
+}
+.row {
+	padding-bottom: 18px;
+}
+
+.full-width-form { 
+	width: 100%; 
+}
+
+.tt-dataset-typeahead {
+	margin: 0;
+	width: 100%;
+	color: #555555;
+	vertical-align: middle;
+	background-color: #ffffff;
+	border: 1px solid #cccccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+	transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
