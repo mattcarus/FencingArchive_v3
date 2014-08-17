@@ -53,6 +53,7 @@
 		echo $comp->getFilename();
 		echo "\n";
 		echo $comp->getCSV();
+		break;
   	}
   	else
   	{
