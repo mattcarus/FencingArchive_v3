@@ -523,7 +523,7 @@
   		
   		foreach ( $this->results as $result )
   		{
-  			$sql = sprintf("INSERT INTO `results` (`cid`, `fid`, `position`) VALUES ('%d', '%d', '%d');", $cid, $result->getDatabaseId(), $this->getPosition());
+  			$sql = sprintf("INSERT INTO `results` (`cid`, `fid`, `position`) VALUES ('%d', '%d', '%d');", $cid, $result->getDatabaseId(), $result->getPosition());
   			logMessage("", "Executing query " . $sql);
   		}
   	}
