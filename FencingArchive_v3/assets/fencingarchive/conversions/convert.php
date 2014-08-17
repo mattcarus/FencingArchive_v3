@@ -327,14 +327,24 @@
 
   	}
   	
-  	function setName($name)
+    function setName($name)
   	{
   		$this->name = $name;
   	}
   	
-  	function setWeapon($weapon)
+    function getName()
+  	{
+  		return $this->name;
+  	}
+  	
+    function setWeapon($weapon)
   	{
   		$this->weapon = $weapon;
+  	}
+  	
+    function getWeapon()
+  	{
+  		return $this->weapon;
   	}
   	
   	function setCategory($category)
@@ -342,9 +352,19 @@
   		$this->category = $category;
   	}
   	
+    function getCategory()
+  	{
+  		return $this->category;
+  	}
+  	
   	function setDate($date)
   	{
   		$this->date = $date;
+  	}
+  	
+  	function getDate()
+  	{
+  		return $this->date;
   	}
   	
   	function addResult($result)
@@ -483,12 +503,27 @@
   	
   	function prepForDatabase()
   	{
-  		
-  		// Check that fencers are present in the database and record their IDs
-  		
   		foreach ( $this->results as $result )
   		{
   			logMessage("", sprintf("ID for %s, %s is %d", $result->getSurname(), $result->getForename(), $result->addToDatabase()));
+  		}
+  	}
+  	
+  	function insertIntoDatabase()
+  	{
+  		$db = new Database();
+  		
+  		// Add Competition Record to Database
+  		$sql = sprintf("INSERT INTO `competitions` (`name`, `date`, `weapon`, `category`) VALUES ('%s', '%s', '%s', '%s');", $this->getName(), $this->getDate(), $this->getWeapon(), $this->getCategory());
+  		logMessage("", "Executing query " . $sql);
+
+  		$cid = mysql_insert_id();
+  		$cid = 123;
+  		
+  		foreach ( $this->results as $result )
+  		{
+  			$sql = sprintf("INSERT INTO `results` (`cid`, `fid`, `position`) VALUES ('%d', '%d', '%d');", $cid, $result->getDatabaseId(), $this->getPosition());
+  			logMessage("", "Executing query " . $sql);
   		}
   	}
   }
