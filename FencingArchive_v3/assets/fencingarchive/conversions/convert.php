@@ -284,17 +284,17 @@
   	{
   		$db = new Database();
 
-  		logMessage("", sprintf("Checking %s, %s", $result->getSurname(), $result->getForename()));
+  		logMessage("", sprintf("Checking %s, %s", $this->getSurname(), $this->getForename()));
   			
-  		$dbRes = $db->query(sprintf("SELECT id FROM `fencers` WHERE `surname`='%s' AND `forename`='%s';", $result->getSurname(), $result->getForename()));
+  		$dbRes = $db->query(sprintf("SELECT id FROM `fencers` WHERE `surname`='%s' AND `forename`='%s';", $this->getSurname(), $this->getForename()));
   		if ( !mysql_num_rows($dbRes) )
   		{
-  			logMessage("error", sprintf("%s, %s not in database", $result->getSurname(), $result->getForename()));
+  			logMessage("error", sprintf("%s, %s not in database", $this->getSurname(), $this->getForename()));
   			return false;
   		}
   		else
   		{
-  			logMessage("ok", sprintf("%s, %s is in database", $result->getSurname(), $result->getForename()));
+  			logMessage("ok", sprintf("%s, %s is in database", $this->getSurname(), $this->getForename()));
   			
   			return mysql_result($dbRes, 0);
   		}
@@ -305,7 +305,7 @@
   		if ( !$this->getDatabaseId() )
   		{
   			$db = new Database();
-  			$sql = sprintf("INSERT INTO `fencers` (`surname`, `forename`) VALUES ('%s', '%s');", $result->getSurname(), $result->getForename());
+  			$sql = sprintf("INSERT INTO `fencers` (`surname`, `forename`) VALUES ('%s', '%s');", $this->getSurname(), $this->getForename());
   			logMessage("", "Executing query " . $sql);
   			//$db->query($sql);
   		}
