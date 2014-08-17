@@ -460,7 +460,7 @@
   		{
   			logMessage("", sprintf("Checking %s, %s", $result->getSurname(), $result->getForename()));
   			
-  			$dbRes = $db->query(sprintf("SELECT * FROM fencers WHERE surname=%s AND forename=%s;", $result->getSurname(), $result->getForename()));
+  			$dbRes = $db->query(sprintf("SELECT * FROM `fencers` WHERE `surname`='%s' AND `forename`='%s';", $result->getSurname(), $result->getForename()));
   			if ( !mysql_num_rows($dbRes) )
   			{
   				logMessage("error", sprintf("%s, %s not in database", $result->getSurname(), $result->getForename()));
