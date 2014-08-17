@@ -309,6 +309,7 @@
   			logMessage("", "Executing query " . $sql);
   			//$db->query($sql);
   		}
+  		return $this->getDatabaseId();
   	}
   }
   
@@ -487,7 +488,7 @@
   		
   		foreach ( $this->results as $result )
   		{
-  			logMessage("", sprintf("ID for %s, %s is %d", $result->getSurname(), $result->getForename(), $result->getDatabaseId()));
+  			logMessage("", sprintf("ID for %s, %s is %d", $result->getSurname(), $result->getForename(), $result->addToDatabase()));
   		}
   	}
   }
