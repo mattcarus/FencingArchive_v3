@@ -457,6 +457,8 @@
   		
   		foreach ( $this->results as $result )
   		{
+  			logMessage("", sprintf("Checking %s, %s", $result->getSurname(), $result->getForename()));
+  			
   			$dbRes = $db->query(sprintf("SELECT * FROM fencers WHERE surname=%s AND forename=%s;", $result->getSurname(), $result->getForename()));
   			if ( mysql_num_rows($dbRes) < 1 )
   			{
