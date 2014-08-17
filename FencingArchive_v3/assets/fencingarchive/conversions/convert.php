@@ -15,6 +15,8 @@
   $file = $opt['url'];
 
   require_once 'simplehtml.class.php';
+  require_once '../definitions.php';
+  require_once '../FA.database.class.php';
   
   // Load list of conversion classes
   $conversions = glob("convert.*.php");
@@ -278,6 +280,36 @@
   		return sprintf("%d,\"%s\",\"%s\",,\"%s\",\"%s\"", $this->position, $this->surname, $this->forename, $this->club, $this->nationality);
   	}
   	
+  	function getDatabaseId()
+  	{
+  		$db = new Database();
+
+  		logMessage("", sprintf("Checking %s, %s", $result->getSurname(), $result->getForename()));
+  			
+  		$dbRes = $db->query(sprintf("SELECT id FROM `fencers` WHERE `surname`='%s' AND `forename`='%s';", $result->getSurname(), $result->getForename()));
+  		if ( !mysql_num_rows($dbRes) )
+  		{
+  			logMessage("error", sprintf("%s, %s not in database", $result->getSurname(), $result->getForename()));
+  			return false;
+  		}
+  		else
+  		{
+  			logMessage("ok", sprintf("%s, %s is in database", $result->getSurname(), $result->getForename()));
+  			
+  			return mysql_result($dbRes, 0);
+  		}
+  	}
+  	
+  	function addToDatabase()
+  	{
+  		if ( !$this->getDatabaseId() )
+  		{
+  			$db = new Database();
+  			$sql = sprintf("INSERT INTO `fencers` (`surname`, `forename`) VALUES ('%s', '%s');", $result->getSurname(), $result->getForename());
+  			logMessage("", "Executing query " . $sql);
+  			//$db->query($sql);
+  		}
+  	}
   }
   
   class CompetitionCSV
@@ -450,25 +482,12 @@
   	
   	function prepForDatabase()
   	{
-  		require_once '../definitions.php';
-  		require_once '../FA.database.class.php';
   		
-  		$db = new Database();
   		// Check that fencers are present in the database and record their IDs
   		
   		foreach ( $this->results as $result )
   		{
-  			logMessage("", sprintf("Checking %s, %s", $result->getSurname(), $result->getForename()));
-  			
-  			$dbRes = $db->query(sprintf("SELECT * FROM `fencers` WHERE `surname`='%s' AND `forename`='%s';", $result->getSurname(), $result->getForename()));
-  			if ( !mysql_num_rows($dbRes) )
-  			{
-  				logMessage("error", sprintf("%s, %s not in database", $result->getSurname(), $result->getForename()));
-  			}
-  			else
-  			{
-  				logMessage("ok", sprintf("%s, %s is in database", $result->getSurname(), $result->getForename()));
-  			}
+  			logMessage("", sprintf("ID for %s, %s is %d", $result->getSurname(), $result->getForename(), $result->getDatabaseId()));
   		}
   	}
   }
