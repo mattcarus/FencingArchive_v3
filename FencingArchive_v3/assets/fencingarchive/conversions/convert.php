@@ -67,6 +67,7 @@
   {
   	logMessage("", "Debug flag set");
   	$comp->prepForDatabase();
+  	$comp->insertIntoDatabase();
   }
 
   if ( isset($opt['database']) )
