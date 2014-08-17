@@ -305,7 +305,7 @@
   		if ( !$this->getDatabaseId() )
   		{
   			$db = new Database();
-  			$sql = sprintf("INSERT INTO `fencers` (`surname`, `forename`) VALUES ('%s', '%s');", $this->getSurname(), $this->getForename());
+  			$sql = sprintf("INSERT INTO `fencers` (`surname`, `forename`, `club`,  `nationality`) VALUES ('%s', '%s', '%s', '%s');", $this->getSurname(), $this->getForename(), $this->getClub(), $this->getNationality());
   			logMessage("", "Executing query " . $sql);
   			//$db->query($sql);
   		}
