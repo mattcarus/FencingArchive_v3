@@ -170,7 +170,7 @@ $app->get('/series/:id', function ($id) {
   echo $twig->render('series.html', array('id' => $id));
 });
 
-$app->get('/series/:term', function ($term) {
+$app->get('/search/:term', function ($term) {
 	global $twig;
 	echo $twig->render('search.html', array('term' => $term));
 });
