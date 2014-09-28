@@ -99,7 +99,7 @@
 		$.each(jsonObject.hits.hits, function(index, val) {
 			var score = Math.round(val._score * 100);
 			var pageUrl = 'http://v3.fencingarchive.net/' + val._type + '/' + val._id;	// We should be able to remove this when the elasticsearch crawler has been updated...
-			$('#searchResults').append('<div class="row"><div class="col-sm-12"><div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title"><a href="' + pageUrl + '">' + val._source.page_name + '</a></h3><i>' + val._type + ' - ' + score + '%</i></div><div class="panel-body"><ul class="unstyled-list" id="about"></ul></div></div></div>');
+			$('#searchResults').append('<div class="row"><div class="col-sm-12"><h3 class="panel-title"><a href="' + pageUrl + '">' + val._source.page_name + '</a></h3><i>' + val._type + ' - ' + score + '%</i></div>');
 		});
 /*
 		$('#searchResults').append('
