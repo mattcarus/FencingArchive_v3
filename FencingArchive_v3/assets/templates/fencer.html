@@ -37,29 +37,18 @@
           <a class="navbar-brand" href="#">FencingArchive</a>
         </div>
         <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Edit <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Merge Fencer Profiles</a></li>
-                <li><a href="#">Add/Change Fencer Image</a></li>
-                <li><a href="#">Edit Profile</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
-          </ul>
           <form class="navbar-form navbar-right" role="form">
-            <div class="form-group">
+            <div class="form-inline form-group">
               <input type="text" placeholder="Search" class="form-control">
             </div>
-            <button type="submit" class="btn btn-success">Go!</button>
+            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search"></span></button>
           </form>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="https://twitter.com/share?text=#fencingarchive:&url={{ url }}"><span class="socicon">a</span></a></li>
+            <li><a href="http://www.facebook.com/sharer.php?u={{ url }}"><span class="socicon">b</span></a></li>
+            <li><a href="https://plus.google.com/share?hl=en-GB&url={{ url }}"><span class="socicon">c</span></a></li>
+          </ul>
+          
         </div><!--/.nav-collapse -->
       </div>
     </div>
@@ -77,19 +66,7 @@
             <div class="panel-heading">
               <img class="img-responsive" alt="..." id="fencer_image" />
             </div>
-          </div>
-          <div style="text-align: center;">
-			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<!-- fencingarchive.net Responsive -->
-			<ins class="adsbygoogle"
-			     style="display:block"
-			     data-ad-client="ca-pub-3145321863445101"
-			     data-ad-slot="8728452292"
-			     data-ad-format="auto"></ins>
-			<script>
-			(adsbygoogle = window.adsbygoogle || []).push({});
-			</script>
-          </div>          
+          </div>        
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">Clubs</h3>
