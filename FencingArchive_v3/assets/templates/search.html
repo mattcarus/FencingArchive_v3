@@ -94,6 +94,7 @@
 	    type: "GET",
 		url: "http://api.fencingarchive.net/search/{{ term }}"
 	  }).done( function(json){
+		$.parseJSON(json);
 		console.log(json);
 		$.each(json.hits.hits, function(index, val) {
 			$('#searchResults').append('Got Hit<br />');
