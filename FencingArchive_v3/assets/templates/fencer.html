@@ -80,11 +80,12 @@
           </div>
           <div style="text-align: center;">
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<!-- fencingarchive.net Medium Rectangle -->
+			<!-- fencingarchive.net Responsive -->
 			<ins class="adsbygoogle"
-			     style="display:inline-block;width:300px;height:250px"
+			     style="display:block"
 			     data-ad-client="ca-pub-3145321863445101"
-			     data-ad-slot="7251719098"></ins>
+			     data-ad-slot="8728452292"
+			     data-ad-format="auto"></ins>
 			<script>
 			(adsbygoogle = window.adsbygoogle || []).push({});
 			</script>
@@ -107,11 +108,12 @@
           </div>
           <div style="text-align: center;">
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<!-- fencingarchive.net Medium Rectangle -->
+			<!-- fencingarchive.net Responsive -->
 			<ins class="adsbygoogle"
-			     style="display:inline-block;width:300px;height:250px"
+			     style="display:block"
 			     data-ad-client="ca-pub-3145321863445101"
-			     data-ad-slot="7251719098"></ins>
+			     data-ad-slot="8728452292"
+			     data-ad-format="auto"></ins>
 			<script>
 			(adsbygoogle = window.adsbygoogle || []).push({});
 			</script>
@@ -187,7 +189,10 @@
 		);
 				
 		var popularity = [];
-		var i = 0;
+		
+		popularity.push({ index: 0, val: 0 });
+		
+		var i = 1;
 		
 		$(xml).find('popularity').find('node').each(function(){
 			//var tmp = {};
@@ -195,6 +200,9 @@
 			popularity.push({ index: i, val: $(this).text() });
 			i++;
 		});
+		
+		popularity.push({ index: i, val: 0 });
+		
 		console.log(JSON.stringify(popularity));
 		sparkline('#popularity', popularity, 100, 25)
 	  });
