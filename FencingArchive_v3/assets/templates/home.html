@@ -35,9 +35,9 @@
           <a class="navbar-brand" href="http://fencingarchive.net/">FencingArchive</a>
         </div>
         <div class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="form">
+          <form class="navbar-form navbar-right" role="form" onSubmit="var pageUrl='http://v3.fencingarchive.net/search/' + $('#searchTerm').val(); window.location=pageUrl; return false;">
             <div class="form-inline form-group">
-              <input type="text" placeholder="Search" class="form-control">
+              <input type="text" placeholder="Search" class="form-control" id="searchTerm">
             </div>
             <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search"></span></button>
           </form>
