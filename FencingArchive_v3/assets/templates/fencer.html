@@ -161,6 +161,7 @@
 			  if ( $i%2 ) { alignment = 'right' } else { alignment = 'left' }
 			  
 			  competitionName = $(this).find('name').text() + ' ' + $(this).find('category').text() + ' (' + $(this).find('weapon').text() + ')';
+			  competitionName = $(this).find('full_name').text();
 			  
 			  addTimelineElement($(this).find('cid').text(), alignment, '#fencer-timeline', competitionName, $(this).find('position').text(), 'Pos: ' + $(this).find('position').text(), $(this).find('date').text(), 'glyphicon-check');
 			  $i++;
