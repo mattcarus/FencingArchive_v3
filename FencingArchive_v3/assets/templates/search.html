@@ -97,7 +97,7 @@
 		var jsonObject = $.parseJSON(json);
 		console.log(jsonObject);
 		$.each(jsonObject.hits.hits, function(index, val) {
-			$('#searchResults').append('<div class="row"><div class="col-sm-12"><div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">' + val._source.page_name + '</h3></div><div class="panel-body"><ul class="unstyled-list" id="about"></ul></div></div></div>');
+			$('#searchResults').append('<div class="row"><div class="col-sm-12"><div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">' + val._source.page_name + '</h3> (' + val._type + ')</div><div class="panel-body"><ul class="unstyled-list" id="about"></ul></div></div></div>');
 		});
 /*
 		$('#searchResults').append('
