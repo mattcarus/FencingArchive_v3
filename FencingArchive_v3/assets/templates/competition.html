@@ -107,13 +107,12 @@
 	  }).done( function(xml){
 		console.log("Loaded " + $(xml).find('name').text());
 		
-		var pageUrl = 'http://v3.fencingarchive.net/fencer/' + $(xml).find('fid').text();
-		
 		$('#name').html('<br />' + $(xml).find('full_name').text());
 		$('#about').append('<li>Category: ' + $(xml).find('category').text() + '</li>');
 		$('#about').append('<li>Date: ' + $(xml).find('date').text() + '</li>');
 		
 		$(xml).find('results').find('node').each(function(){
+			var pageUrl = 'http://v3.fencingarchive.net/fencer/' + $(xml).find('fid').text();
 			$('#competition-results').append('<li class="list-group-item"><span class="badge">' + $(this).find('position').text() + '</span><a href="' + pageUrl + '">' + $(this).find('fencer_name').text() + '</a></li>');
 		
 		
