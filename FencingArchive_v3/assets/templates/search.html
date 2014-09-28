@@ -95,6 +95,9 @@
 		url: "http://api.fencingarchive.net/search/{{ term }}"
 	  }).done( function(json){
 		console.log(json);
+		$.each(json.hits.hits, function(index, val) {
+			$('#searchResults').append('Got Hit<br />');
+		});
 /*
 		$('#searchResults').append('
 	      <div class="row">
