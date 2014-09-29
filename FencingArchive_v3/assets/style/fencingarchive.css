@@ -4,22 +4,10 @@
 	background-color: #8C7853 !important;
 }
 
-.bronze:before {
-  content: "3";
-}
-
 .silver {
 	background-color: #E6E8FA !important;
 }
 
-.silver:before {
-  content: "2";
-}
-
 .gold {
 	background-color: #CFB53B !important;
-}
-
-.gold:before {
-  content: "<i>1</i>";
 }
