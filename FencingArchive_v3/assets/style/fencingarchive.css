@@ -23,3 +23,15 @@ body {
 	-webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 	transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
+
+.bronze {
+	background-color: #8C7853;
+}
+
+.silver {
+	background-color: #E6E8FA;
+}
+
+.gold {
+	background-color: #CFB53B;
+}
