@@ -11,3 +11,8 @@
 .gold {
 	background-color: #CFB53B !important;
 }
+
+.search-listing-image {
+	height: 48px;
+	width:  100%;
+}
