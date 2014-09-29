@@ -16,3 +16,7 @@
 	height: 64px;
 	width:  auto;
 }
+
+.sparkline {
+	fill: rgb(1, 50, 87);
+}
