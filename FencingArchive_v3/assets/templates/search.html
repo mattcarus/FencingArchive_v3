@@ -88,36 +88,15 @@
 				var image = '<img src="' + val._source.image_url + '" align="left" class="search-listing-image" />';
 			}
 			
-			$('#searchResults').append('<div class="row"><div class="col-sm-12 search-listing">' + image + '<h3 class="panel-title"><a href="' + pageUrl + '">' + val._source.page_name + '</a></h3><i>' + val._type + ' - ' + score + '%</i></div>');
+			$('#searchResults').append('
+					<div class="row">
+						<div class="col-sm-12 search-listing">
+							' + image + '
+							<h3 class="panel-title"><a href="' + pageUrl + '">' + val._source.page_name + '</a></h3>
+							<i>' + val._type + ' - ' + score + '%</i>
+						</div>
+					</div>');
 		});
-/*
-		$('#searchResults').append('
-	      <div class="row">
-	        <div class="col-sm-12">
-	          <div class="panel panel-default">
-	            <div class="panel-heading">
-	              <h3 class="panel-title">Result</h3>
-	            </div>
-	            <div class="panel-body">
-	              <ul class="unstyled-list" id="about"><!-- Club List --></ul>
-	            </div>
-	          </div>
-	        </div>
-		');
-*/
-/*
-		console.log("Loaded " + $(xml).find('name').text());
-		
-		$('#name').html('<br />' + $(xml).find('full_name').text());
-		$('#about').append('<li>Category: ' + $(xml).find('category').text() + '</li>');
-		$('#about').append('<li>Date: ' + $(xml).find('date').text() + '</li>');
-		
-		$(xml).find('results').find('node').each(function(){
-			$('#competition-results').append('<li class="list-group-item"><span class="badge">' + $(this).find('position').text() + '</span>' + $(this).find('fencer_name').text() + '</li>');
-		
-		
-		});
-*/
 });
     </script>
 </body>
