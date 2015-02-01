@@ -88,7 +88,7 @@
 				var image = '<img src="' + val._source.image_url + '" align="left" class="search-listing-image" />';
 			}
 			
-			$('#searchResults').append('<div class="row"><div class="col-sm-12 search-listing"><div class="bs-callout bs-callout-warning"><table><tr><td width="100px">' + image + '</td><td><h3 class="panel-title"><a href="' + pageUrl + '">' + val._source.page_name + '</a></h3><i>' + val._type + ' - ' + score + '%</i></td></tr></table></div></div></div>');
+			$('#searchResults').append('<div class="row"><div class="col-sm-12 search-listing"><div class="well"><table><tr><td width="100px">' + image + '</td><td><h3 class="panel-title"><a href="' + pageUrl + '">' + val._source.page_name + '</a></h3><i>' + val._type + ' - ' + score + '%</i></td></tr></table></div></div></div>');
 		});
 });
     </script>
