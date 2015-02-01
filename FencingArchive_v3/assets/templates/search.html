@@ -59,15 +59,18 @@
       </div>
 
       <div class="row">
-      	<div class="col-sm-12">
-      	Search took <span id="searchTime">0</span>ms
+        <div class="col-sm-3">
+          Ads
+        </div>
+      	<div class="col-sm-9">
+      		Search took <span id="searchTime">0</span>ms
+			<div id="searchResults"></div>
       	</div>
       </div>
 
     </div> <!-- /container -->
 
 
-  <div id="name"></div>
     <script>
 	  $.ajax({
 	    type: "GET",
