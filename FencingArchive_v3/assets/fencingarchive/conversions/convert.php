@@ -287,7 +287,9 @@
 
   		logMessage("", sprintf("Checking %s, %s", $this->getSurname(), $this->getForename()));
   			
-  		$dbRes = $db->query(sprintf("SELECT id FROM `fencers` WHERE `surname`='%s' AND `forename`='%s';", $this->getSurname(), $this->getForename()));
+  		$dbRes = $db->query(sprintf("SELECT id FROM `fencers` WHERE `surname`='%s' AND `forename`='%s';",
+  				mysql_real_escape_string($this->getSurname()),
+  				mysql_real_escape_string($this->getForename()) ));
   		if ( !mysql_num_rows($dbRes) )
   		{
   			logMessage("error", sprintf("%s, %s not in database", $this->getSurname(), $this->getForename()));
@@ -306,7 +308,10 @@
   		if ( !$this->getDatabaseId() )
   		{
   			$db = new Database();
-  			$sql = sprintf("INSERT INTO `fencers` (`surname`, `forename`, `nationality`) VALUES ('%s', '%s', '%s');", $this->getSurname(), $this->getForename(), $this->getNationality());
+  			$sql = sprintf("INSERT INTO `fencers` (`surname`, `forename`, `nationality`) VALUES ('%s', '%s', '%s');",
+  					mysql_real_escape_string($this->getSurname()),
+  					mysql_real_escape_string($this->getForename()),
+  					mysql_real_escape_string($this->getNationality()));
   			logMessage("", "Executing query " . $sql);
   			$db->query($sql);
   		}
@@ -515,7 +520,11 @@
   		$db = new Database();
   		
   		// Add Competition Record to Database
-  		$sql = sprintf("INSERT INTO `competitions` (`name`, `date`, `weapon`, `category`) VALUES ('%s', '%s', '%s', '%s');", $this->getName(), $this->getDate(), $this->getWeapon(), $this->getCategory());
+  		$sql = sprintf("INSERT INTO `competitions` (`name`, `date`, `weapon`, `category`) VALUES ('%s', '%s', '%s', '%s');",
+  				mysql_real_escape_string($this->getName()),
+  				mysql_real_escape_string($this->getDate()),
+  				mysql_real_escape_string($this->getWeapon()),
+  				mysql_real_escape_string($this->getCategory()) );
   		logMessage("", "Executing query " . $sql);
 
   		$db->query($sql);
