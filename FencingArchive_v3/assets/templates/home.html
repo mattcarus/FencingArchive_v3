@@ -138,7 +138,7 @@
 				  
 				  compDiv += $(compXml).find('results').find('node').filter(function(){
 					  return $(this).find('position').text() == "1";
-				  }).parent().find('fencer_name').text();
+				  }).find('fencer_name').text();
 				  
 				  compDiv += '</div></div></div>';
 				  $('#recentCompPanels').append(compDiv);
