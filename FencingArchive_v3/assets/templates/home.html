@@ -148,7 +148,7 @@
 					  return $(this).find('position').text() == "3";
 				  }).find("fencer_name").text() + '<br />';
 				  
-				  compDiv += '</div></div></div>';
+				  compDiv += '<p class="text-right"><a href="http://v3.fencingarchive.net/competition/' + $(compXml).find('cid').text() + '">Full Results</a></p></div></div></div>';
 				  $('#recentCompPanels').append(compDiv);
 			  })
 				
