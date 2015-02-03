@@ -107,12 +107,12 @@
           </div>
         </div><!-- /.col-sm-6 -->
       </div><!--  /.row -->
+      
       <div class="row">
-        <div class="container-fluid">
-          <div class="row" id="recentCompPanels">
-          </div><!--  /.row -->
+        <div class="container-fluid" id="recentCompPanels">
         </div>      
       </div><!-- /.row -->
+      
     </div> <!-- /container -->
 
     <script>
@@ -126,6 +126,7 @@
 			})
 		  });
 	  
+	  var panelCount = 0;
 	  $.ajax({
 		    type: "GET",
 			url: "http://api.fencingarchive.net/query/lastNCompetitionIds/12",
@@ -136,7 +137,13 @@
 				  type: "GET",
 				  url: "http://api.fencingarchive.net/competition/" + $(this).text()
 			  }).done( function(compXml){
-				  compDiv = '<div class="col-sm-3"><div class="panel panel-default"><div class="panel-heading">';
+				  compDiv = '';
+				  
+				  if ( panelCount % 4 == 0 ) {
+					  compDiv += '<div class="row">';
+				  }
+				  
+				  compDiv += '<div class="col-sm-3"><div class="panel panel-default"><div class="panel-heading">';
 				  compDiv += '<h3 class="panel-title"><a href="http://v3.fencingarchive.net/competition/' + $(compXml).find('cid').text() + '">' + $(compXml).find('full_name').text() + '</a></h3>';
 				  compDiv += '</div><div class="panel-body">';
 				  
@@ -153,7 +160,13 @@
 				  }).find("fencer_name").text() + '<br />';
 				  
 				  compDiv += '<p class="text-right"><a href="http://v3.fencingarchive.net/competition/' + $(compXml).find('cid').text() + '">Full Results</a></p></div></div></div>';
+				  
+				  if ( panelCount % 4 == 0 ) {
+					  compDiv += '</div>';
+				  }
+				  
 				  $('#recentCompPanels').append(compDiv);
+				  panelCount++;
 			  })
 				
 			})
