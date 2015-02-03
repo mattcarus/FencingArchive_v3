@@ -32,12 +32,13 @@
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar">1</span>
-            <span class="icon-bar">2</span>
-            <span class="icon-bar">3</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="http://fencingarchive.net/">FencingArchive</a>
         </div>
+        
         <div class="navbar-collapse collapse">
           <form class="navbar-form navbar-right" role="form" onSubmit="var pageUrl='http://v3.fencingarchive.net/search/' + $('#searchTerm').val(); window.location=pageUrl; return false;">
             <div class="form-inline form-group">
@@ -46,9 +47,9 @@
             <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search"></span></button>
           </form>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="https://twitter.com/share?text=#fencingarchive:&url={{ url }}"><span class="socicon">a</span></a></li>
-            <li><a href="http://www.facebook.com/sharer.php?u={{ url }}"><span class="socicon">b</span></a></li>
-            <li><a href="https://plus.google.com/share?hl=en-GB&url={{ url }}"><span class="socicon">c</span></a></li>
+            <li><p class="navbar-text"><a href="https://twitter.com/share?text=#fencingarchive:&url={{ url }}"><span class="socicon">a</span></a>
+            <a href="http://www.facebook.com/sharer.php?u={{ url }}"><span class="socicon">b</span></a>
+            <a href="https://plus.google.com/share?hl=en-GB&url={{ url }}"><span class="socicon">c</span></a></p></li>
           </ul>
           
         </div><!--/.nav-collapse -->
