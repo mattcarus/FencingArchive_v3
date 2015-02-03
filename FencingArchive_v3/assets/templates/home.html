@@ -136,21 +136,17 @@
 				  compDiv += '<h3 class="panel-title"><a href="http://v3.fencingarchive.net/competition/' + $(compXml).find('cid').text() + '">' + $(compXml).find('full_name').text() + '</a></h3>';
 				  compDiv += '</div><div class="panel-body">';
 				  
-				  compDiv += $(compXml).find("results").find("node").filter(function() {
+				  compDiv += '1. ' + $(compXml).find("results").find("node").filter(function() {
 					  return $(this).find('position').text() == "1";
-				  }).find("fencer_name").text();
+				  }).find("fencer_name").text() + '<br />';
 				  
-				  compDiv += '<br />';
-				  
-				  compDiv += $(compXml).find("results").find("node").filter(function() {
+				  compDiv += '2. ' + $(compXml).find("results").find("node").filter(function() {
 					  return $(this).find('position').text() == "2";
-				  }).find("fencer_name").text();
+				  }).find("fencer_name").text() + '<br />';
 				  
-				  compDiv += '<br />';
-				  
-				  compDiv += $(compXml).find("results").find("node").filter(function() {
+				  compDiv += '3. ' + $(compXml).find("results").find("node").filter(function() {
 					  return $(this).find('position').text() == "3";
-				  }).find("fencer_name").text();
+				  }).find("fencer_name").text() + '<br />';
 				  
 				  compDiv += '</div></div></div>';
 				  $('#recentCompPanels').append(compDiv);
