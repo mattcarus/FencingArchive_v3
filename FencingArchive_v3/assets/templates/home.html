@@ -134,10 +134,18 @@
 			  }).done( function(compXml){
 				  compDiv = '<div class="col-sm-3"><div class="panel panel-default"><div class="panel-heading">';
 				  compDiv += '<h3 class="panel-title"><a href="http://v3.fencingarchive.net/competition/' + $(compXml).find('cid').text() + '">' + $(compXml).find('full_name').text() + '</a></h3>';
-				  compDiv += '</div><div class="panel-body" style="background: url(http://i.ytimg.com/vi/nZEL8IL4vpo/maxresdefault.jpg);">';
+				  compDiv += '</div><div class="panel-body">';
 				  
 				  compDiv += $(compXml).find("results").find("node").filter(function() {
 					  return $(this).find('position').text() == "1";
+				  }).find("fencer_name").text();
+				  
+				  compDiv += $(compXml).find("results").find("node").filter(function() {
+					  return $(this).find('position').text() == "2";
+				  }).find("fencer_name").text();
+				  
+				  compDiv += $(compXml).find("results").find("node").filter(function() {
+					  return $(this).find('position').text() == "3";
 				  }).find("fencer_name").text();
 				  
 				  compDiv += '</div></div></div>';
