@@ -123,7 +123,7 @@
 				  }
 				  
 				  compDiv += '<div class="col-sm-3"><div class="panel panel-default"><div class="panel-heading">';
-				  compDiv += '<h3 class="panel-title"><a href="http://v3.fencingarchive.net/competition/' + $(compXml).find('cid').text() + '">' + $(compXml).find('full_name').text() + '</a><small>' + $(compXml).find('date').text() + '</small></h3>';
+				  compDiv += '<h3 class="panel-title"><a href="http://v3.fencingarchive.net/competition/' + $(compXml).find('cid').text() + '">' + $(compXml).find('full_name').text() + '</a><small><br />' + $(compXml).find('date').text() + '</small></h3>';
 				  compDiv += '</div><div class="panel-body">';
 				  
 				  compDiv += '1. ' + $(compXml).find("results").find("node").filter(function() {
