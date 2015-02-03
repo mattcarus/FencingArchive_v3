@@ -85,30 +85,6 @@
       </div>
 
       <div class="row">
-        <div class="col-sm-6">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">Recent Competitions</h3>
-            </div>
-            <div class="panel-body">
-              <ul class="unstyled-list" id="competitions"><!-- Recent Competitions List --></ul>
-            </div>
-          </div>
-        </div><!-- /.col-sm-6 -->
-
-        <div class="col-sm-6">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title" id="screen_name"><!-- Screen Name --></h3>
-            </div>
-            <div class="panel-body">
-              <ul class="unstyled-list" id="twitter"><!-- Status Tweets --></ul>
-            </div>
-          </div>
-        </div><!-- /.col-sm-6 -->
-      </div><!--  /.row -->
-      
-      <div class="row">
         <div class="container-fluid" id="recentCompPanels">
         </div>      
       </div><!-- /.row -->
@@ -126,7 +102,7 @@
 			})
 		  });
 	  
-	  var panelCount = 0;
+	  var panelCount = 1;
 	  $.ajax({
 		    type: "GET",
 			url: "http://api.fencingarchive.net/query/lastNCompetitionIds/12",
