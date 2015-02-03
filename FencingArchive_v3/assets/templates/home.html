@@ -140,9 +140,13 @@
 					  return $(this).find('position').text() == "1";
 				  }).find("fencer_name").text();
 				  
+				  compDiv += '<br />';
+				  
 				  compDiv += $(compXml).find("results").find("node").filter(function() {
 					  return $(this).find('position').text() == "2";
 				  }).find("fencer_name").text();
+				  
+				  compDiv += '<br />';
 				  
 				  compDiv += $(compXml).find("results").find("node").filter(function() {
 					  return $(this).find('position').text() == "3";
