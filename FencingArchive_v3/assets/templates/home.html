@@ -128,7 +128,7 @@
 			crossDomain: true
 		  }).done( function(xml){
 			$(xml).find('node').each( function() {
-			  $ajax({
+			  $.ajax({
 				  type: "GET",
 				  url: "http://api.fencingarchive.net/competition/" + $(this).text()
 			  }).done( function(compXml){
