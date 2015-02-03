@@ -107,8 +107,12 @@
           </div>
         </div><!-- /.col-sm-6 -->
       </div><!--  /.row -->
-      
-      <div class="row" id="recentCompPanels"></div><!--  /.row -->      
+      <div class="row">
+        <div class="container-fluid">
+          <div class="row" id="recentCompPanels">
+          </div><!--  /.row -->
+        </div>      
+      </div><!-- /.row -->
     </div> <!-- /container -->
 
     <script>
@@ -124,7 +128,7 @@
 	  
 	  $.ajax({
 		    type: "GET",
-			url: "http://api.fencingarchive.net/query/lastNCompetitionIds/120",
+			url: "http://api.fencingarchive.net/query/lastNCompetitionIds/12",
 			crossDomain: true
 		  }).done( function(xml){
 			$(xml).find('node').each( function() {
