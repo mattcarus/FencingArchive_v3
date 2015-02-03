@@ -518,13 +518,15 @@
   		$sql = sprintf("INSERT INTO `competitions` (`name`, `date`, `weapon`, `category`) VALUES ('%s', '%s', '%s', '%s');", $this->getName(), $this->getDate(), $this->getWeapon(), $this->getCategory());
   		logMessage("", "Executing query " . $sql);
 
+  		$db->query($sql);
+  		
   		$cid = mysql_insert_id();
-  		$cid = 123;
   		
   		foreach ( $this->results as $result )
   		{
   			$sql = sprintf("INSERT INTO `results` (`cid`, `fid`, `position`) VALUES ('%d', '%d', '%d');", $cid, $result->getDatabaseId(), $result->getPosition());
   			logMessage("", "Executing query " . $sql);
+  			$db->query($sql);
   		}
   	}
   }
