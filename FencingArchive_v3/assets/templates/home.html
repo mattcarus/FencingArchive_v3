@@ -132,7 +132,16 @@
 				  type: "GET",
 				  url: "http://api.fencingarchive.net/competition/" + $(this).text()
 			  }).done( function(compXml){
-				  $('#recentCompPanels').append('<div class="col-sm-3"><div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">' + $(compXml).find('full_name').text() + '</h3></div><div class="panel-body" style="background: url(http://i.ytimg.com/vi/nZEL8IL4vpo/maxresdefault.jpg);">Panel content</div></div></div>');
+				  compDiv = '<div class="col-sm-3"><div class="panel panel-default"><div class="panel-heading">';
+				  compDiv += '<h3 class="panel-title">' + $(compXml).find('full_name').text() + '</h3>';
+				  compDiv += '</div><div class="panel-body" style="background: url(http://i.ytimg.com/vi/nZEL8IL4vpo/maxresdefault.jpg);">';
+				  
+				  compDiv += $(compXml).find('results').find('node').filter(function(){
+					  return $(this).find('position').text() == "1";
+				  }).parent().find('fencer_name').text();
+				  
+				  compDiv += '</div></div></div>';
+				  $('#recentCompPanels').append(compDiv);
 			  })
 				
 			})
