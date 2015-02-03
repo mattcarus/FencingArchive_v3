@@ -136,11 +136,9 @@
 				  compDiv += '<h3 class="panel-title">' + $(compXml).find('full_name').text() + '</h3>';
 				  compDiv += '</div><div class="panel-body" style="background: url(http://i.ytimg.com/vi/nZEL8IL4vpo/maxresdefault.jpg);">';
 				  
-				  $(compXml).each(function(){
-					  alert($(this).find('results').find('node').filter(function(){
-					    return $(this).find('position').text() == "1";
-				      }).find('fencer_name').text());
-				  });
+				  compDiv += $(xml).find("results").find("node").filter(function() {
+					  return $(this).find('position').text() == "1";
+				  }).find("fencer_name").text();
 				  
 				  compDiv += '</div></div></div>';
 				  $('#recentCompPanels').append(compDiv);
