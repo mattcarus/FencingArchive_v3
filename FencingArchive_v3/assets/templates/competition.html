@@ -79,8 +79,8 @@
           </div>
         </div><!-- /.col-sm-4 -->
         <div class="col-sm-9">
-          <ul class="list-group" id="competition-results"><!-- Competition Results -->
-          </ul>
+          <table class="table" id="competition-results"><!-- Competition Results -->
+          </table>
           <div style="text-align: center;">
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 			<!-- fencingarchive.net Responsive -->
@@ -128,7 +128,7 @@
 		
 		$(xml).find('results').find('node').each(function(){
 			var pageUrl = 'http://v3.fencingarchive.net/fencer/' + $(this).find('fid').text();
-			$('#competition-results').append('<li class="list-group-item"><span class="badge">' + $(this).find('position').text() + '</span><a href="' + pageUrl + '">' + $(this).find('fencer_name').text() + '</a></li>');
+			$('#competition-results').append('<tr><td>' + $(this).find('position').text() + '</td><td><a href="' + pageUrl + '">' + $(this).find('fencer_name').text() + '</a></td></tr>');
 		
 		
 		});
