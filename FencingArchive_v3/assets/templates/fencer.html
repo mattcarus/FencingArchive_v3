@@ -200,7 +200,13 @@
 			url: "http://api.fencingarchive.net/query/closeFencers/{{ id }}"
 		  }).done( function(xml){
 			$(xml).find('node').each(function() {
-				$('#similar_fencers').append($(this).text());
+				$.ajax({
+				    type: "GET",
+					url: "http://api.fencingarchive.net/fencer/" + $(this).text()
+				}).done( function () {
+					$('#similar_fencers').append('<a href="' + $(this).find('profile_url').text() + '">' + $(this).find('name').text() + '</a><br />');
+				})
+				
 			});
 		  });
 
