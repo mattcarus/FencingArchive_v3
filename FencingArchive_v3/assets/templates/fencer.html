@@ -204,7 +204,7 @@
 				    type: "GET",
 					url: "http://api.fencingarchive.net/fencer/" + $(this).text()
 				}).done( function (fencer) {
-					console.log(fencer.parseXML());
+					console.log(fencer.parseXml());
 					$('#similar_fencers').append('<a href="' + $(fencer).find('profile_url').text() + '">' + $(fencer).name.text() + '</a><br />');
 				})
 				
