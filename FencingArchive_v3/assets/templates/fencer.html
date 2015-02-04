@@ -203,8 +203,8 @@
 				$.ajax({
 				    type: "GET",
 					url: "http://api.fencingarchive.net/fencer/" + $(this).text()
-				}).done( function () {
-					$('#similar_fencers').append('<a href="' + $(this).find('profile_url').text() + '">' + $(this).find('name').text() + '</a><br />');
+				}).done( function (fencer) {
+					$('#similar_fencers').append('<a href="' + $(fencer).find('profile_url').text() + '">' + $(fencer).find('name').text() + '</a><br />');
 				})
 				
 			});
