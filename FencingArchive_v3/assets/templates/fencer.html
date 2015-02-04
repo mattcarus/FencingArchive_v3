@@ -94,8 +94,16 @@
             <div class="panel-body">
               <ul class="unstyled-list" id="ranking_list"><!-- Ranking List --></ul>
             </div>
-          </div>         
-        </div><!-- /.col-sm-4 -->
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Similar Fencers</h3>
+            </div>
+            <div class="panel-body">
+              <ul class="unstyled-list" id="similar_fencers"><!-- Similar Fencers --></ul>
+            </div>
+          </div>
+        </div><!-- /.col-sm-3 -->
         <div class="col-sm-9">
           <!-- Timeline (http://bootsnipp.com/snippets/featured/timeline-responsive) -->
           <div style="text-align: center;">
@@ -187,7 +195,16 @@
 		sparkline('#popularity', popularity, 100, 25)
 	  });
 
-      function addTimelineElement(id, alignment, element, heading, position, content, timeago, glyphicon)
+	  $.ajax({
+		    type: "GET",
+			url: "http://api.fencingarchive.net/query/closeFencers/{{ id }}"
+		  }).done( function(xml){
+			$(xml).find('node').each(function() {
+				$('#similar_fencers').append($(this).text());
+			});
+		  });
+
+	  function addTimelineElement(id, alignment, element, heading, position, content, timeago, glyphicon)
 	  {
 		  colour = 'default';
 		  if ( position == '1' ) { colour = 'gold' }
