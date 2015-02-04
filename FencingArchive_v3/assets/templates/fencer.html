@@ -205,7 +205,7 @@
 				    type: "GET",
 					url: "http://api.fencingarchive.net/fencer/" + $(this).text()
 				}).done( function (fencer) {
-					$('#similar_fencers').append('<a href="' + $(fencer).find('profile_url').text() + '">' + $(fencer).find('/fencer/name').text() + '</a><br />');
+					$('#similar_fencers').append('<a href="' + $(fencer).find('profile_url').text() + '">' + $(fencer).xpath('/fencer/name').text() + '</a><br />');
 				})
 				
 			});
