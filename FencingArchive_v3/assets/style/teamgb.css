@@ -259,7 +259,7 @@ body {
   font-size: 14px;
   line-height: 1.428571429;
   color: #045283;
-/*  background-color: #fdfdfd; */
+  background-color: rgba(255, 255, 255, 0.5);
 }
 input,
 button,
