@@ -248,18 +248,13 @@ table {
 html {
   font-size: 62.5%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  background: url(http://upload.wikimedia.org/wikipedia/commons/6/6c/0408_USA_Olympic_fencing.jpg) no-repeat center center fixed;
-  background-size: cover;
-  -webkit-background-size: cover;
-  -mox-background-size: cover;
-  -o-background-size: cover;
 }
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.428571429;
   color: #045283;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #fff;
 }
 input,
 button,
