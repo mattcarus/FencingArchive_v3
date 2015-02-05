@@ -64,9 +64,7 @@
       <div class="row">
         <div class="col-sm-3">
           <div class="well">
-            
               <img class="img-responsive img-rounded" alt="..." id="fencer_image" />
-            
           </div>
           <div class="panel panel-default">
             <div class="panel-heading">
@@ -204,7 +202,7 @@
 				    type: "GET",
 					url: "http://api.fencingarchive.net/fencer/" + $(this).text()
 				}).done( function (fencer) {
-					$('#similar_fencers').append('<a href="' + $(fencer).find('profile_url').text() + '"><img src="' + $(fencer).find('image_url').text() + '" class="img-responsive img-rounded" /><br />' + $(fencer).xpath('/fencer/name').text() + '</a><br />');
+					$('#similar_fencers').append('<div class="well"><a href="' + $(fencer).find('profile_url').text() + '"><img src="' + $(fencer).find('image_url').text() + '" class="img-responsive img-rounded" /><br />' + $(fencer).xpath('/fencer/name').text() + '</a></div>');
 				})
 				
 			});
