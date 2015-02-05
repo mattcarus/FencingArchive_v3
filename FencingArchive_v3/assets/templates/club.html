@@ -61,6 +61,8 @@
             <div class="panel-heading">
               <h3 class="panel-title">About</h3>
             </div>
+            <div class="well" id="club-image">
+            </div>
             <div class="panel-body">
               <ul class="unstyled-list" id="about"><!-- Club Details --></ul>
             </div>
@@ -82,6 +84,7 @@
 	  }).done( function(xml){
 		console.log("Loaded " + $(xml).find('name').text());		
 		$('#name').html('<br />' + $(xml).find('name').text());
+		$('#club-image').html('<img src="' + $(xml).find('image_url').text() + '" />');
 		$('#about').append('<li>Founded: ' + $(xml).find('founding_date').text() + '</li>');
 		$('#about').append('<li>Status: ' + $(xml).find('status').text() + '</li>');
 	  });
