@@ -53,7 +53,7 @@
     <div class="container theme-showcase" role="main">
 
       <div class="page-header">
-        <h1><span id="name"><!-- Club Name --></span><span id="popularity"></span></h1>
+        <h1><span id="name"><!-- Club Name --></span></h1>
       </div>
       <div class="row">
         <div class="col-sm-3">
@@ -62,12 +62,12 @@
               <h3 class="panel-title">About</h3>
             </div>
             <div class="panel-body">
-              <ul class="unstyled-list" id="about"><!-- Club List --></ul>
+              <ul class="unstyled-list" id="about"><!-- Club Details --></ul>
             </div>
           </div>
         </div><!-- /.col-sm-4 -->
         <div class="col-sm-9">
-          <ul class="list-group" id="competition-results"><!-- Competition Results -->
+          <ul class="list-group" id="club-members"><!-- Club Members -->
           </ul>
 		</div>
       </div>
@@ -80,17 +80,10 @@
 	    type: "GET",
 		url: "http://api.fencingarchive.net/club/{{ id }}"
 	  }).done( function(xml){
-		console.log("Loaded " + $(xml).find('name').text());
-		
-		$('#name').html('<br />' + $(xml).find('full_name').text());
-		$('#about').append('<li>Category: ' + $(xml).find('category').text() + '</li>');
-		$('#about').append('<li>Date: ' + $(xml).find('date').text() + '</li>');
-		
-		$(xml).find('results').find('node').each(function(){
-			$('#competition-results').append('<li class="list-group-item"><span class="badge">' + $(this).find('position').text() + '</span>' + $(this).find('fencer_name').text() + '</li>');
-		
-		
-		});
+		console.log("Loaded " + $(xml).find('name').text());		
+		$('#name').html('<br />' + $(xml).find('name').text());
+		$('#about').append('<li>Founded: ' + $(xml).find('founding_date').text() + '</li>');
+		$('#about').append('<li>Status: ' + $(xml).find('status').text() + '</li>');
 	  });
     </script>
 </body>
