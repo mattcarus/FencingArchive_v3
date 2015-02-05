@@ -58,9 +58,7 @@
     <div class="container theme-showcase" role="main">
 
       <div class="page-header">
-        <table width="100%">
-          <tr><td><h1><span id="name"><!-- Fencer Name --></span></h1></td><td align="right"><h1><span id="popularity"></span></h1></td></tr>
-        </table>
+        <h1><span id="name"><!-- Fencer Name --></span></h1>
       </div>
       <div class="row">
         <div class="col-sm-3">
@@ -174,24 +172,6 @@
 			  $i++;
 			}
 		);
-				
-		var popularity = [];
-		
-		popularity.push({ index: 0, val: 0 });
-		
-		var i = 1;
-		
-		$(xml).find('popularity').find('node').each(function(){
-			//var tmp = {};
-			//tmp[i] = $(this).text();
-			popularity.push({ index: i, val: $(this).text() });
-			i++;
-		});
-		
-		popularity.push({ index: i, val: 0 });
-		
-		console.log(JSON.stringify(popularity));
-		sparkline('#popularity', popularity, 100, 25)
 	  });
 
 	  $.ajax({
@@ -228,41 +208,6 @@
 		  
 	      $('#fencer-timeline').append(timelineHtml);
 	  }
-	  
-		function sparkline(elemId, data, width, height) {
-		  var x = d3.scale.linear().range([0, width]);
-		  var y = d3.scale.linear().range([height, 0]);
-		  
-		  var line = d3.svg.line()
-             .x(function(d) { return x(d.index); })
-             .y(function(d) { return y(d.val); });
-
-		  var dataMax = 0;
-		  data.forEach(function(d) {
-			if ( d.val > dataMax ) {
-			  dataMax = d.val;
-			}
-		  });
-		  
-		  console.log(dataMax);
-			 
-		  data.forEach(function(d) {
-			d.index = d.index;
-			d.val = (d.val * height) / dataMax;
-		  });
-		  
-		  x.domain(d3.extent(data, function(d) { return d.index; }));
-		  y.domain(d3.extent(data, function(d) { return d.val; }));
-		
-		  d3.select(elemId)
-			.append('svg')
-			.attr('width', width)
-			.attr('height', height)
-			.append('path')
-			.datum(data)
-			.attr('class', 'sparkline')
-			.attr('d', line);
-		}
 
     </script>
 </body>
