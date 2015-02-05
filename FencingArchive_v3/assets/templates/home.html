@@ -41,7 +41,7 @@
         </div>
         
         <div class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="form" onSubmit="var pageUrl='http://v3.fencingarchive.net/search/' + $('#searchTerm').val(); window.location=pageUrl; return false;">
+          <form class="navbar-form navbar-right" role="form" onSubmit="var pageUrl='http://v3.fencingarchive.net/search/' + encodeURI($('#searchTerm').val()); window.location=pageUrl; return false;">
             <div class="form-inline form-group">
               <input type="text" placeholder="Search" class="form-control typeahead" id="searchTerm">
             </div>
