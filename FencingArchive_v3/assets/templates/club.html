@@ -19,6 +19,8 @@
     <script src="//d3js.org/d3.v3.min.js"></script>
     
     <script src="http://mattcarus.co.uk/track.js" type="text/javascript"></script>
+    
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWCT25lyZHF1ZJ5XgJaBxks8KuC7ahaoM"></script>
 </head>
 
 <body role="document">
@@ -63,11 +65,16 @@
 			  </div>
   			</div>
             <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">About</h3>
+              <div class="panel-heading">
+                <h3 class="panel-title">About</h3>
+              </div>
+              <div class="panel-body">
+                <ul class="unstyled-list" id="about"><!-- Club Details --></ul>
+              </div>
             </div>
-            <div class="panel-body">
-              <ul class="unstyled-list" id="about"><!-- Club Details --></ul>
+            <div class="panel panel-default">
+              <div class="panel-body" id="club-map">
+              </div>
             </div>
           </div>
         </div><!-- /.col-sm-4 -->
@@ -87,10 +94,21 @@
 	  }).done( function(xml){
 		console.log("Loaded " + $(xml).find('name').text());		
 		$('#name').html('<br />' + $(xml).xpath('/club/name').text());
-		$('#club-image').html('<img src="' + $(xml).find('image_url').text() + '" />');
-		$('#about').append('<li>Founded: ' + $(xml).find('founding_date').text() + '</li>');
-		$('#about').append('<li>Status: ' + $(xml).find('status').text() + '</li>');
+		$('#club-image').html('<img src="' + $(xml).xpath('/club/image_url').text() + '" />');
+		$('#about').append('<li>Founded: ' + $(xml).xpath('/club/founding_date').text() + '</li>');
+		$('#about').append('<li>Status: ' + $(xml).xpath('/club/status').text() + '</li>');
+		
+		
 	  });
+
+	  function initializeMap(lat, lng) {}
+		var mapOptions = {
+		  zoom: 8,
+		  center: new google.maps.LatLng(lat, lng)
+		};
+
+		var map = new google.maps.Map(document.getElementById('club-map'), mapOptions);
+	  }
     </script>
 </body>
 </html>
