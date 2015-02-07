@@ -84,8 +84,8 @@
             </div>
         </div><!-- /.col-sm-4 -->
         <div class="col-sm-9">
-          <ul class="list-group" id="club-members"><!-- Club Members -->
-          </ul>
+          <table class="table" id="club-members"><!-- Club Members -->
+          </table>
 		</div>
       </div>
     </div> <!-- /container -->
@@ -106,7 +106,7 @@
 		initializeMap($(xml).xpath('/club/latitude').text(), $(xml).xpath('/club/longitude').text());
 		
 		$(xml).find('members').find('fencer').each(function(){
-			$('#club-members').append('<li><a href="' + $(this).xpath('profile_url').text() + '">' + $(this).xpath('name').text() + '</a></li>')
+			$('#club-members').append('<tr><td><a href="' + $(this).xpath('profile_url').text() + '">' + $(this).xpath('name').text() + '</a></td></tr>')
 		});
 	  });
 
