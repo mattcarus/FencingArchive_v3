@@ -106,8 +106,7 @@
 		initializeMap($(xml).xpath('/club/latitude').text(), $(xml).xpath('/club/longitude').text());
 		
 		$(xml).find('members').find('fencer').each(function(){
-			console.log($(this));
-			$('club-members').append('<li><a href="' + $(this).find('profile_url').text() + '">' + $(this).find('name').text() + '</a></li>')
+			$('#club-members').append('<li><a href="' + $(this).find('profile_url').text() + '">' + $(this).find('name').text() + '</a></li>')
 		});
 	  });
 
