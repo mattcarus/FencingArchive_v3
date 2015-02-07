@@ -14,6 +14,7 @@
     <link href="http://v3.fencingarchive.net/assets/socicon/socicon.css" rel="stylesheet">
     
 	<script src="http://v3.fencingarchive.net/assets/jquery/js/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="http://v3.fencingarchive.net/assets/jquery/js/jquery.xpath.js"></script>
 	<script src="http://v3.fencingarchive.net/assets/bootstrap/bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
     <script src="//d3js.org/d3.v3.min.js"></script>
     
@@ -85,7 +86,7 @@
 		url: "http://api.fencingarchive.net/club/{{ id }}"
 	  }).done( function(xml){
 		console.log("Loaded " + $(xml).find('name').text());		
-		$('#name').html('<br />' + $(xml).find('name').text());
+		$('#name').html('<br />' + $(xml).xpath('/name').text());
 		$('#club-image').html('<img src="' + $(xml).find('image_url').text() + '" />');
 		$('#about').append('<li>Founded: ' + $(xml).find('founding_date').text() + '</li>');
 		$('#about').append('<li>Status: ' + $(xml).find('status').text() + '</li>');
