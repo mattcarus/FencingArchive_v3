@@ -152,8 +152,8 @@
 				type: "GET",
 				url: "http://api.fencingarchive.net/club/" + $(this).text()
 			  }).done( function(xml){
-				console.log('Club Name: ' + $(xml).find('club_name').text());
-				$('#club_list').append('<li><a href="http://v3.fencingarchive.net/club/' + $(xml).find('club_id').text() + '">' + $(xml).find('club_name').text() + '</a></li>');
+				console.log('Club Name: ' + $(xml).find('name').text());
+				$('#club_list').append('<li><a href="http://v3.fencingarchive.net/club/' + $(xml).find('id').text() + '">' + $(xml).find('name').text() + '</a></li>');
 			  });
 		});
 		
