@@ -86,7 +86,7 @@
 		url: "http://api.fencingarchive.net/club/{{ id }}"
 	  }).done( function(xml){
 		console.log("Loaded " + $(xml).find('name').text());		
-		$('#name').html('<br />' + $(xml).xpath('/name').text());
+		$('#name').html('<br />' + $(xml).xpath('/club/name').text());
 		$('#club-image').html('<img src="' + $(xml).find('image_url').text() + '" />');
 		$('#about').append('<li>Founded: ' + $(xml).find('founding_date').text() + '</li>');
 		$('#about').append('<li>Status: ' + $(xml).find('status').text() + '</li>');
