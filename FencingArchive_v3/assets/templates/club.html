@@ -105,7 +105,9 @@
 		
 		initializeMap($(xml).xpath('/club/latitude').text(), $(xml).xpath('/club/longitude').text());
 		
-		$('#info-panels').append('<a href="" class="btn btn-default btn-block" role="button">Visit Website</a');
+		if ( $(xml).xpath('/club/url').text() != "" ) {
+			$('#info-panels').append('<a href="' + $(xml).xpath('/club/url').text() + '" class="btn btn-default btn-block" role="button">Visit Website</a');
+		}
 		
 		$(xml).find('members').find('fencer').each(function(){
 			$('#club-members').append('<tr><td><a href="' + $(this).xpath('profile_url').text() + '">' + $(this).xpath('name').text() + '</a></td></tr>')
