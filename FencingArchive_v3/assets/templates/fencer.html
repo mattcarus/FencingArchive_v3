@@ -147,14 +147,7 @@
 		$('#name').html('<br />' + $(xml).find('surname').text() + ', ' + $(xml).find('forename').text() + ' (' + $(xml).find('nationality').text() + ')');
 
 		$(xml).find('clubs').find('node').each(function(){
-			  console.log('Club ID: ' + $(this).text());
-			  $.ajax({
-				type: "GET",
-				url: "http://api.fencingarchive.net/club/" + $(this).text()
-			  }).done( function(xml){
-				console.log('Club Name: ' + $(xml).find('name').text());
-				$('#club_list').append('<li><a href="http://v3.fencingarchive.net/club/' + $(xml).find('id').text() + '">' + $(xml).find('name').text() + '</a></li>');
-			  });
+		  $('#club_list').append('<li><a href="http://v3.fencingarchive.net/club/' + $(xml).find('id').text() + '">' + $(xml).find('name').text() + '</a></li>');
 		});
 		
 		$('#fencer_image').attr('src', $(xml).find('image_url').text());
