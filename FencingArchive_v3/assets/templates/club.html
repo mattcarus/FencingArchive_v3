@@ -98,10 +98,10 @@
 		$('#about').append('<li>Founded: ' + $(xml).xpath('/club/founding_date').text() + '</li>');
 		$('#about').append('<li>Status: ' + $(xml).xpath('/club/status').text() + '</li>');
 		
-		
+		initializeMap($(xml).xpath('/club/latitude').text(), $(xml).xpath('/club/longitude').text());
 	  });
 
-	  function initializeMap(lat, lng) {}
+	  function initializeMap(lat, lng) {
 		var mapOptions = {
 		  zoom: 8,
 		  center: new google.maps.LatLng(lat, lng)
