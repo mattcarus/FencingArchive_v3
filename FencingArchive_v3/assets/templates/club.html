@@ -65,7 +65,7 @@
         <h1><span id="name"><!-- Club Name --></span></h1>
       </div>
       <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-3" id='info-panels'>
             <div class="panel panel-default">
 			  <div class="panel-body" id="club-image" style="text-align: center;">
 			  </div>
@@ -104,6 +104,8 @@
 		$('#about').append('<li>Status: ' + $(xml).xpath('/club/status').text() + '</li>');
 		
 		initializeMap($(xml).xpath('/club/latitude').text(), $(xml).xpath('/club/longitude').text());
+		
+		$('#info-panels').append('<button class="btn btn-default">Visit Website</button');
 		
 		$(xml).find('members').find('fencer').each(function(){
 			$('#club-members').append('<tr><td><a href="' + $(this).xpath('profile_url').text() + '">' + $(this).xpath('name').text() + '</a></td></tr>')
