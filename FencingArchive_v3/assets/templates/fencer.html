@@ -161,7 +161,7 @@
 			  competitionName = $(this).find('name').text() + ' ' + $(this).find('category').text() + ' (' + $(this).find('weapon').text() + ')';
 			  competitionName = $(this).find('full_name').text();
 			  
-			  var content = '<table class="table">';
+			  var content = '<table class="table"><tr><th>Bout</th></tr>';
 			  $.ajax({
 				    type: "GET",
 					url: "http://api.fencingarchive.net/bouts/{{ id }}/" + $(this).find('cid').text()
