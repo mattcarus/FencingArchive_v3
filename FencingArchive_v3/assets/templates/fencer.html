@@ -163,25 +163,21 @@
 			  competitionName = $(this).find('name').text() + ' ' + $(this).find('category').text() + ' (' + $(this).find('weapon').text() + ')';
 			  competitionName = $(this).find('full_name').text();
 			  
-			  var content = '<div id="bouts-' + $(this).find('cid').text() + '"></div>';
+			  var content = '<table class="table" id="bouts-' + cid + '"><tr><th>Bouts</th></tr></table>';
 			  
 			  $.ajax({
 				    type: "GET",
 					url: "http://api.fencingarchive.net/bouts/{{ id }}/" + cid
 				  }).done( function(boutsXml) {
-					  var content = '<table class="table"><tr><th>Bouts</th></tr>';
-					  console.log('here!!!');
 					  $(boutsXml).find('bout').each(function() {
-						  content += '<tr>';
+						  content = '<tr>';
 						  content += '<td>' + $(this).find('winner').find('fencer').find('surname').text() + '</td>';
 						  content += '<td>' + $(this).find('winner_score').text() + '</td>';
 						  content += '<td>' + $(this).find('loser_score').text() + '</td>';
 						  content += '<td>' + $(this).find('loser').find('fencer').find('surname').text() + '</td>';
 						  content += '</tr>';
+						  $('#bouts-' + $(this).find('competition').find('competition').('cid').text()).append(content);
 					  });
-					  content += '</table>';
-					  console.log('#bouts-' + cid + ' : ' + content);
-					  $('#bouts-' + cid).append(content);
 				  });
 			  addTimelineElement(
 					  	$(this).find('cid').text(),
