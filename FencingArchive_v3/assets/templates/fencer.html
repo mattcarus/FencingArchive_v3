@@ -178,7 +178,8 @@
 						  content += '</tr>';
 					  });
 					  content += '</table>';
-					  $('#bouts-' + $(this).xpath('/competition/competition/cid').text()).append(content);
+					  console.log('#bouts-' + $(this).find('competition').find('competition').find('cid').text() + ' : ' + content);
+					  $('#bouts-' + $(this).find('competition').find('competition').find('cid').text()).append(content);
 				  });
 			  addTimelineElement(
 					  	$(this).find('cid').text(),
