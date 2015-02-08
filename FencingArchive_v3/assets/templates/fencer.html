@@ -167,8 +167,9 @@
 					url: "http://api.fencingarchive.net/bouts/{{ id }}/" + $(this).find('cid').text()
 				  }).done( function() {
 					  content += '<tr><td>Test</td></tr>';
+					  console.log('here!!!');
 					  $(this).find('bout').each(function() {
-						  console.log('here!!!');
+						  
 						  console.log($(this).find('winner').find('fencer').find('name').text());
 						  content += '<tr><td>vs. ' + $(this).find('winner').find('fencer').find('name').text() + '</td></tr>';
 					  });
