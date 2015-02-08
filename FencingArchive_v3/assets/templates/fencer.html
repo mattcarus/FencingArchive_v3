@@ -161,7 +161,27 @@
 			  competitionName = $(this).find('name').text() + ' ' + $(this).find('category').text() + ' (' + $(this).find('weapon').text() + ')';
 			  competitionName = $(this).find('full_name').text();
 			  
-			  addTimelineElement($(this).find('cid').text(), alignment, '#fencer-timeline', competitionName, $(this).find('position').text(), 'Pos: ' + $(this).find('position').text(), $(this).find('date').text(), 'glyphicon-check');
+			  var content = '<table class="table">';
+			  $.ajax({
+				    type: "GET",
+					url: "http://api.fencingarchive.net/bouts/{{ id }}/" + $(this).find('cid').text()
+				  }).done( function() {
+					  $(this).each(function() {
+						content += '<tr><td>vs. ' + $(this).xpath('/winner/fencer/name').text() + '</td></tr>';
+					  });
+				  });
+			  content += '</table>';
+			  
+			  addTimelineElement(
+					  	$(this).find('cid').text(),
+					  	alignment,
+					  	'#fencer-timeline',
+					  	competitionName,
+					  	$(this).find('position').text(),
+					  	content,
+					  	$(this).find('date').text(),
+					  	'glyphicon-check'
+			  );
 			  $i++;
 			}
 		);
@@ -196,7 +216,7 @@
 			  timelineAlignment = ' class="timeline-inverted"';
 		  }
 		  
-		  var timelineHtml = '<li' + timelineAlignment + '><div class="timeline-badge ' + colour + '"><span class="glyphicon' + icon + '" style="vertical-align: middle; line-height: 50px;"></span></div><div class="timeline-panel"><div class="timeline-heading"><table><tr><td><span style="font-size: 60px">' + position + '</span></td><td><span style="font-size: 20px"><a href="http://v3.fencingarchive.net/competition/' + id + '">' + heading + '</a></span><br /><small class="text-muted"><i class="glyphicon glyphicon-calendar"></i> ' + timeago + '</small></td></tr></table></div><div class="timeline-body"></div></div></li>';
+		  var timelineHtml = '<li' + timelineAlignment + '><div class="timeline-badge ' + colour + '"><span class="glyphicon' + icon + '" style="vertical-align: middle; line-height: 50px;"></span></div><div class="timeline-panel"><div class="timeline-heading"><table><tr><td><span style="font-size: 60px">' + position + '</span></td><td><span style="font-size: 20px"><a href="http://v3.fencingarchive.net/competition/' + id + '">' + heading + '</a></span><br /><small class="text-muted"><i class="glyphicon glyphicon-calendar"></i> ' + timeago + '</small></td></tr></table></div><div class="timeline-body">' + content + '</div></div></li>';
 		  
 		  
 	      $('#fencer-timeline').append(timelineHtml);
