@@ -176,7 +176,7 @@
 						  content += '<td>' + $(this).find('loser_score').text() + '</td>';
 						  content += '<td>' + $(this).find('loser').find('fencer').find('surname').text() + '</td>';
 						  content += '</tr>';
-						  $('#bouts-' + $(this).find('competition').find('competition').('cid').text()).append(content);
+						  $('#bouts-' + $(this).find('competition').find('competition').find('cid').text()).append(content);
 					  });
 				  });
 			  addTimelineElement(
