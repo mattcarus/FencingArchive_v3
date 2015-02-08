@@ -158,6 +158,8 @@
 		$(xml).find('results').find('node').each(function(){
 			  if ( $i%2 ) { alignment = 'right' } else { alignment = 'left' }
 			  
+			  cid = $(this).find('cid').text();
+			  
 			  competitionName = $(this).find('name').text() + ' ' + $(this).find('category').text() + ' (' + $(this).find('weapon').text() + ')';
 			  competitionName = $(this).find('full_name').text();
 			  
@@ -165,7 +167,7 @@
 			  
 			  $.ajax({
 				    type: "GET",
-					url: "http://api.fencingarchive.net/bouts/{{ id }}/" + $(this).find('cid').text()
+					url: "http://api.fencingarchive.net/bouts/{{ id }}/" + cid
 				  }).done( function(boutsXml) {
 					  var content = '<table class="table"><tr><th>Bouts</th></tr>';
 					  console.log('here!!!');
@@ -178,8 +180,8 @@
 						  content += '</tr>';
 					  });
 					  content += '</table>';
-					  console.log('#bouts-' + $(this).find('bout').find('competition').find('competition').find('cid').text() + ' : ' + content);
-					  $('#bouts-' + $(this).find('competition').find('competition').find('cid').text()).append(content);
+					  console.log('#bouts-' + cid + ' : ' + content);
+					  $('#bouts-' + cid).append(content);
 				  });
 			  addTimelineElement(
 					  	$(this).find('cid').text(),
