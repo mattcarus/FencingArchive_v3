@@ -161,11 +161,12 @@
 			  competitionName = $(this).find('name').text() + ' ' + $(this).find('category').text() + ' (' + $(this).find('weapon').text() + ')';
 			  competitionName = $(this).find('full_name').text();
 			  
-			  var content = '<table class="table"><tr><th>Bout</th></tr>';
+			  
 			  $.ajax({
 				    type: "GET",
 					url: "http://api.fencingarchive.net/bouts/{{ id }}/" + $(this).find('cid').text()
 				  }).done( function(boutsXml) {
+					  var content = '<table class="table"><tr><th>Bout</th></tr>';
 					  content += '<tr><td>Test</td></tr>';
 					  console.log('here!!!');
 					  $(boutsXml).find('bout').each(function() {
@@ -173,20 +174,22 @@
 						  console.log($(this).find('winner').find('fencer').find('surname').text());
 						  content += '<tr><td>vs. ' + $(this).find('winner').find('fencer').find('surname').text() + '</td></tr>';
 					  });
+					  content += '</table>';
+					  addTimelineElement(
+							  	$(this).find('cid').text(),
+							  	alignment,
+							  	'#fencer-timeline',
+							  	competitionName,
+							  	$(this).find('position').text(),
+							  	content,
+							  	$(this).find('date').text(),
+							  	'glyphicon-check'
+					  );
+					  $i++;
 				  });
-			  content += '</table>';
 			  
-			  addTimelineElement(
-					  	$(this).find('cid').text(),
-					  	alignment,
-					  	'#fencer-timeline',
-					  	competitionName,
-					  	$(this).find('position').text(),
-					  	content,
-					  	$(this).find('date').text(),
-					  	'glyphicon-check'
-			  );
-			  $i++;
+			  
+
 			}
 		);
 	  });
