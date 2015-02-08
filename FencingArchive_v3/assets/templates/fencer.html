@@ -161,7 +161,7 @@
 			  competitionName = $(this).find('name').text() + ' ' + $(this).find('category').text() + ' (' + $(this).find('weapon').text() + ')';
 			  competitionName = $(this).find('full_name').text();
 			  
-			  var content;
+			  var content = '<div id="bouts-' + $(this).find('cid').text() + '"></div>';
 			  
 			  $.ajax({
 				    type: "GET",
@@ -178,7 +178,7 @@
 						  content += '</tr>';
 					  });
 					  content += '</table>';
-					  
+					  $('#bouts-' + $(this).find('cid').text()).append(content);
 				  });
 			  addTimelineElement(
 					  	$(this).find('cid').text(),
