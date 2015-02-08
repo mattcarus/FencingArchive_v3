@@ -168,7 +168,8 @@
 				  }).done( function() {
 					  content += '<tr><td>Test</td></tr>';
 					  $(this).find('bout').each(function() {
-						  console.log($(this));
+						  console.log('here!!!');
+						  console.log($(this).find('winner').find('fencer').find('name').text());
 						  content += '<tr><td>vs. ' + $(this).find('winner').find('fencer').find('name').text() + '</td></tr>';
 					  });
 				  });
