@@ -177,18 +177,18 @@
 						  content += '</tr>';
 					  });
 					  content += '</table>';
-					  addTimelineElement(
-							  	$(this).find('cid').text(),
-							  	alignment,
-							  	'#fencer-timeline',
-							  	competitionName,
-							  	$(this).find('position').text(),
-							  	content,
-							  	$(this).find('date').text(),
-							  	'glyphicon-check'
-					  );
 					  
 				  });
+			  addTimelineElement(
+					  	$(this).find('cid').text(),
+					  	alignment,
+					  	'#fencer-timeline',
+					  	competitionName,
+					  	$(this).find('position').text(),
+					  	content,
+					  	$(this).find('date').text(),
+					  	'glyphicon-check'
+			  );
 			  $i++;
 			}
 		);
