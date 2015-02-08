@@ -166,8 +166,8 @@
 				    type: "GET",
 					url: "http://api.fencingarchive.net/bouts/{{ id }}/" + $(this).find('cid').text()
 				  }).done( function() {
-					  $(this).each(function() {
-						content += '<tr><td>vs. ' + $(this).xpath('/winner/fencer/name').text() + '</td></tr>';
+					  $(this).each(function(xml) {
+						content += '<tr><td>vs. ' + $(xml).xpath('/winner/fencer/name').text() + '</td></tr>';
 					  });
 				  });
 			  content += '</table>';
