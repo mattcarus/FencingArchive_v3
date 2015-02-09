@@ -134,8 +134,8 @@
 
     <script>
       $.ready(updateRankings());
-      $('.rankings-toggle-button').on('click', function() { 
-    	  $(this).addClass('active').siblings('.btn').removeClass('active');
+      $('.rankings-toggle-button').on('mouseup', function() { 
+    	  //$(this).addClass('active').siblings('.btn').removeClass('active');
     	  updateRankings();
       });
       
