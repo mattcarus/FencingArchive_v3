@@ -163,7 +163,7 @@
 			  competitionName = $(this).find('name').text() + ' ' + $(this).find('category').text() + ' (' + $(this).find('weapon').text() + ')';
 			  competitionName = $(this).find('full_name').text();
 			  
-			  var content = '<table class="table" id="bouts-' + cid + '"></table>';
+			  var content = '<table class="table" id="bouts-' + cid + '" style="margin-bottom: 0px;"></table>';
 			  
 			  $.ajax({
 				    type: "GET",
