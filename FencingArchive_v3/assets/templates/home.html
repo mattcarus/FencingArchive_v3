@@ -125,6 +125,8 @@
         	<section id="section-rankings" class="group">
         		<div class="subgroup" id="section-rankings-senior-mens-epee">
         		</div>
+        		<div class="subgroup" id="section-rankings-senior-womens-epee">
+        		</div>
         	</section>
         </div>      
 
@@ -133,11 +135,10 @@
     </div> <!-- /container -->
 
     <script>
-      $.ready(updateRankings());
-      $('.rankings-toggle-button').on('mouseup', function() { 
-    	  //$(this).addClass('active').siblings('.btn').removeClass('active');
-    	  updateRankings();
-      });
+	    $('body').scrollspy({
+	        target: '.bs-docs-sidebar',
+	        offset: 40
+	    });
       
       function updateRankings()
       {
