@@ -134,7 +134,10 @@
 
     <script>
       $.ready(updateRankings());
-      $('.rankings-toggle-button').on('click', function() { updateRankings() });
+      $('.rankings-toggle-button').on('click', function() { 
+    	  $(this).addClass('active').siblings('.btn').removeClass('active');
+    	  updateRankings();
+      });
       
       function updateRankings()
       {
