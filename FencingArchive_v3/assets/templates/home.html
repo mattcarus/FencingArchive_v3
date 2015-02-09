@@ -86,14 +86,40 @@
       </div>
 
       <div class="row" style="margin-top: 12px;">
-		<div class="col-sm-6">
-		  <ul class="nav nav-tabs">
-		    <li role="presentation" class="active"><a href="#">Epee</a></li>
-		    <li role="presentation"><a href="#">Foil</a></li>
-		    <li role="presentation"><a href="#">Sabre</a></li>
-		  </ul>
+		<div class="col-sm-4">
+			<div class="btn-group" data-toggle="buttons">
+			  <label class="btn btn-primary active">
+			    <input type="radio" name="options" id="option1" autocomplete="off" checked>Male
+			  </label>
+			  <label class="btn btn-primary">
+			    <input type="radio" name="options" id="option2" autocomplete="off">Female
+			  </label>
+			</div>
+			<div class="btn-group" data-toggle="buttons">
+			  <label class="btn btn-primary active">
+			    <input type="radio" name="options" id="option1" autocomplete="off" checked>Epee
+			  </label>
+			  <label class="btn btn-primary">
+			    <input type="radio" name="options" id="option2" autocomplete="off">Foil
+			  </label>
+			  <label class="btn btn-primary">
+			    <input type="radio" name="options" id="option3" autocomplete="off">Sabre
+			  </label>
+			</div>
+			<div class="btn-group" data-toggle="buttons">
+			  <label class="btn btn-primary active">
+			    <input type="radio" name="options" id="option1" autocomplete="off" checked>Senior
+			  </label>
+			  <label class="btn btn-primary">
+			    <input type="radio" name="options" id="option2" autocomplete="off">Junior
+			  </label>
+			  <label class="btn btn-primary">
+			    <input type="radio" name="options" id="option3" autocomplete="off">Cadet
+			  </label>
+			</div>
+			
 		</div>
-        <div class="col-sm-6">
+        <div class="col-sm-8">
         	<div class="container-fluid" id="recentCompPanels"></div>
         </div>      
 
@@ -129,7 +155,7 @@
 					  compDiv += '<div class="row">';
 				  }
 				  
-				  compDiv += '<div class="col-sm-6"><div class="panel panel-default"><div class="panel-heading">';
+				  compDiv += '<div class="col-sm-4"><div class="panel panel-default"><div class="panel-heading">';
 				  compDiv += '<h3 class="panel-title"><a href="http://v3.fencingarchive.net/competition/' + $(compXml).find('cid').text() + '">' + $(compXml).find('full_name').text() + '</a><small><br />' + $(compXml).find('date').text() + '</small></h3>';
 				  compDiv += '</div><div class="panel-body">';
 				  
