@@ -140,7 +140,7 @@
     <script>
 	  $.ajax({
 	    type: "GET",
-		url: "http://api.fencingarchive.net/fencer/{{ id }}"
+		url: "http://api.fencingarchive.net/fencer/{{ id }}/results"
 	  }).done( function(xml){
 		console.log("Loaded " + $(xml).find('name').text());
 		
