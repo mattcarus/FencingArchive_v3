@@ -88,13 +88,13 @@
       <div class="row" style="margin-top: 12px;">
 		<div class="col-sm-6">
 		  <ul class="nav nav-tabs">
-		    <li role="presentation" class="active"><a href="#"><span class="glyphicon icon-epee"></span></a></li>
-		    <li role="presentation"><a href="#"><span class="glyphicon icon-foil"></span></a></li>
-		    <li role="presentation"><a href="#"><span class="glyphicon icon-sabre"></span></a></li>
+		    <li role="presentation" class="active"><a href="#">Epee</a></li>
+		    <li role="presentation"><a href="#">Foil</a></li>
+		    <li role="presentation"><a href="#">Sabre</a></li>
 		  </ul>
 		</div>
         <div class="col-sm-6">
-        	<div class="container-fluid" id="recentCompPanels"></div>div>
+        	<div class="container-fluid" id="recentCompPanels"></div>
         </div>      
 
       </div><!-- /.row -->
@@ -129,7 +129,7 @@
 					  compDiv += '<div class="row">';
 				  }
 				  
-				  compDiv += '<div class="col-sm-3"><div class="panel panel-default"><div class="panel-heading">';
+				  compDiv += '<div class="col-sm-6"><div class="panel panel-default"><div class="panel-heading">';
 				  compDiv += '<h3 class="panel-title"><a href="http://v3.fencingarchive.net/competition/' + $(compXml).find('cid').text() + '">' + $(compXml).find('full_name').text() + '</a><small><br />' + $(compXml).find('date').text() + '</small></h3>';
 				  compDiv += '</div><div class="panel-body">';
 				  
