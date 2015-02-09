@@ -134,7 +134,7 @@
 
     <script>
       $.ready(updateRankings());
-      $('.rankings-toggle-button').on('click', updateRankings());
+      $('.rankings-toggle-button').on('click', function() { updateRankings() });
       
       function updateRankings()
       {
