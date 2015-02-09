@@ -89,35 +89,40 @@
 		<div class="col-sm-4">
 			<div class="btn-group btn-group-justified" data-toggle="buttons">
 			  <label class="btn btn-primary active">
-			    <input type="radio" name="options" id="option1" autocomplete="off" checked>Male
+			    <input type="radio" name="options" id="option-male" autocomplete="off" checked>Male
 			  </label>
 			  <label class="btn btn-primary">
-			    <input type="radio" name="options" id="option2" autocomplete="off">Female
+			    <input type="radio" name="options" id="option-female" autocomplete="off">Female
 			  </label>
 			</div>
 			<div class="btn-group btn-group-justified" data-toggle="buttons">
 			  <label class="btn btn-primary active">
-			    <input type="radio" name="options" id="option1" autocomplete="off" checked>Epee
+			    <input type="radio" name="options" id="option-epee" autocomplete="off" checked>Epee
 			  </label>
 			  <label class="btn btn-primary">
-			    <input type="radio" name="options" id="option2" autocomplete="off">Foil
+			    <input type="radio" name="options" id="option-foil" autocomplete="off">Foil
 			  </label>
 			  <label class="btn btn-primary">
-			    <input type="radio" name="options" id="option3" autocomplete="off">Sabre
+			    <input type="radio" name="options" id="option-sabre" autocomplete="off">Sabre
 			  </label>
 			</div>
 			<div class="btn-group btn-group-justified" data-toggle="buttons">
 			  <label class="btn btn-primary active">
-			    <input type="radio" name="options" id="option1" autocomplete="off" checked>Senior
+			    <input type="radio" name="options" id="option-senior" autocomplete="off" checked>Senior
 			  </label>
 			  <label class="btn btn-primary">
-			    <input type="radio" name="options" id="option2" autocomplete="off">Junior
+			    <input type="radio" name="options" id="option-junior" autocomplete="off">Junior
 			  </label>
 			  <label class="btn btn-primary">
-			    <input type="radio" name="options" id="option3" autocomplete="off">Cadet
+			    <input type="radio" name="options" id="option-cadet" autocomplete="off">Cadet
 			  </label>
 			</div>
-			
+			<div class="panel panel-default">
+			  <div class="panel-body">
+			    <table class="table" id="ranking-table">
+				</table>
+			  </div>
+			</div>
 		</div>
         <div class="col-sm-8">
         	<div class="container-fluid" id="recentCompPanels"></div>
@@ -128,6 +133,56 @@
     </div> <!-- /container -->
 
     <script>
+      function updateRankings()
+      {
+    	  var gender;
+    	  var weapon;
+    	  var category;
+    	  
+    	  if ( $("#option-male").id(':checked') )
+    	  {
+    		  gender = 'M';
+    	  }
+    	  if ( $("#option-female").id(':checked') )
+    	  {
+    		  gender = 'F';
+    	  }
+    	  if ( $("#option-epee").id(':checked') )
+    	  {
+    		  weapon = 'E';
+    	  }
+    	  if ( $("#option-foil").id(':checked') )
+    	  {
+    		  weapon = 'F';
+    	  }
+    	  if ( $("#option-sabre").id(':checked') )
+    	  {
+    		  weapon = 'S';
+    	  }
+    	  if ( $("#option-senior").id(':checked') )
+    	  {
+    		  category = 'senior';
+    	  }
+    	  if ( $("#option-junior").id(':checked') )
+    	  {
+    		  category = 'junior';
+    	  }
+    	  if ( $("#option-cadet").id(':checked') )
+    	  {
+    		  category = 'cadet';
+    	  }
+    	  
+    	  $.ajax({
+  		    type: "GET",
+  			url: "http://api.fencingarchive.net/rankings/" + category + "/" + gender + weapon,
+  			crossDomain: true
+  		  }).done( function(xml){
+  			$(xml).find('node').each( function() {
+  			  $('#ranking-table').append("<tr><td>" + $(this).find('rank').text() + "</td><td>" + $(this).find('fencer').text() + "</td><td>" + $(this).find('points').text() + "</td></tr>");
+  			})
+  		  });
+    	  
+      }
 	  $.ajax({
 		    type: "GET",
 			url: "http://api.fencingarchive.net/query/lastNCompetitionLinks/12",
