@@ -62,9 +62,7 @@
     
     <div class="container theme-showcase" role="main">
 
-      <div class="page-header">
-        <h1><span id="name"><!-- Club Name --></span></h1>
-      </div>
+
       <div class="row">
         <div class="col-sm-3" id='info-panels'>
             <div class="panel panel-default">
@@ -99,7 +97,7 @@
 		url: "http://api.fencingarchive.net/club/{{ id }}"
 	  }).done( function(xml){
 		console.log("Loaded " + $(xml).find('name').text());		
-		$('#name').html('<br />' + $(xml).xpath('/club/name').text());
+		$('#name').html($(xml).xpath('/club/name').text());
 		$('#club-image').html('<img src="' + $(xml).xpath('/club/image_url').text() + '" />');
 		$('#about').append('<li>Founded: ' + $(xml).xpath('/club/founding_date').text() + '</li>');
 		$('#about').append('<li>Status: ' + $(xml).xpath('/club/status').text() + '</li>');

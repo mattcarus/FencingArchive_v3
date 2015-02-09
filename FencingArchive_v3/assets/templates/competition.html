@@ -124,7 +124,7 @@
 	  }).done( function(xml){
 		console.log("Loaded " + $(xml).find('name').text());
 		
-		$('#name').html('<br />' + $(xml).find('full_name').text());
+		$('#name').html($(xml).find('full_name').text());
 		$('#about').append('<li>Category: ' + $(xml).find('category').text() + '</li>');
 		$('#about').append('<li>Date: ' + $(xml).find('date').text() + '</li>');
 		

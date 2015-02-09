@@ -1,5 +1,8 @@
 @CHARSET "ISO-8859-1";
 
+.container {
+	padding-top: 70px;
+}
 .bronze {
 	background-color: #8C7853 !important;
 }
