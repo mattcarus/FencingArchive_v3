@@ -13,6 +13,7 @@
     <link href="http://v3.fencingarchive.net/assets/style/teamgb.css" rel="stylesheet">
     <link href="http://v3.fencingarchive.net/assets/style/search.css" rel="stylesheet">
     <link href="http://v3.fencingarchive.net/assets/socicon/socicon.css" rel="stylesheet">
+    <link href="http://fencingarchive.net/fonts/fencing/fencing.css" rel="stylesheet">
     
 	<script src="http://v3.fencingarchive.net/assets/jquery/js/jquery-1.11.0.min.js"></script>
 	<script src="http://v3.fencingarchive.net/assets/bootstrap/bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
@@ -33,11 +34,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="http://fencingarchive.net/">FencingArchive</a>
+          <a class="navbar-brand" href="http://fencingarchive.net/"><i class="icon-three-arms"></i>FencingArchive</a>
         </div>
         
         <div class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="form" onSubmit="var pageUrl='http://v3.fencingarchive.net/search/' + $('#searchTerm').val(); window.location=pageUrl; return false;">
+          <form class="navbar-form navbar-right" role="form" onSubmit="var pageUrl='http://v3.fencingarchive.net/search/' + encodeURI($('#searchTerm').val()); window.location=pageUrl; return false;">
             <div class="form-inline form-group">
               <input type="text" placeholder="Search" class="form-control typeahead" id="searchTerm">
             </div>
