@@ -124,9 +124,60 @@
         	</section>
         	<section id="section-rankings" class="group">
         		<div class="subgroup" id="section-rankings-senior-mens-epee">
+        			<table class="table" id="rankings-sme"></table>
         		</div>
         		<div class="subgroup" id="section-rankings-senior-womens-epee">
+        			<table class="table" id="rankings-swe"></table>
         		</div>
+        		<div class="subgroup" id="section-rankings-senior-mens-foil">
+        			<table class="table" id="rankings-smf"></table>
+        		</div>
+        		<div class="subgroup" id="section-rankings-senior-womens-foil">
+        			<table class="table" id="rankings-swf"></table>
+        		</div>
+        		<div class="subgroup" id="section-rankings-senior-mens-sabre">
+        			<table class="table" id="rankings-sms"></table>
+        		</div>
+        		<div class="subgroup" id="section-rankings-senior-womens-sabre">
+        			<table class="table" id="rankings-sws"></table>
+        		</div>
+        		<div class="subgroup" id="section-rankings-junior-mens-epee">
+        			<table class="table" id="rankings-jme"></table>
+        		</div>
+        		<div class="subgroup" id="section-rankings-junior-womens-epee">
+        			<table class="table" id="rankings-jwe"></table>
+        		</div>
+        		<div class="subgroup" id="section-rankings-junior-mens-foil">
+        			<table class="table" id="rankings-jmf"></table>
+        		</div>
+        		<div class="subgroup" id="section-rankings-junior-womens-foil">
+        			<table class="table" id="rankings-jwf"></table>
+        		</div>
+        		<div class="subgroup" id="section-rankings-junior-mens-sabre">
+        			<table class="table" id="rankings-jms"></table>
+        		</div>
+        		<div class="subgroup" id="section-rankings-junior-womens-sabre">
+        			<table class="table" id="rankings-jws"></table>
+        		</div>
+        		<div class="subgroup" id="section-rankings-cadet-mens-epee">
+        			<table class="table" id="rankings-cme"></table>
+        		</div>
+        		<div class="subgroup" id="section-rankings-cadet-womens-epee">
+        			<table class="table" id="rankings-cwe"></table>
+        		</div>
+        		<div class="subgroup" id="section-rankings-cadet-mens-foil">
+        			<table class="table" id="rankings-cmf"></table>
+        		</div>
+        		<div class="subgroup" id="section-rankings-cadet-womens-foil">
+        			<table class="table" id="rankings-cwf"></table>
+        		</div>
+        		<div class="subgroup" id="section-rankings-cadet-mens-sabre">
+        			<table class="table" id="rankings-cms"></table>
+        		</div>
+        		<div class="subgroup" id="section-rankings-cadet-womens-sabre">
+        			<table class="table" id="rankings-cws"></table>
+        		</div>
+        		
         	</section>
         </div>      
 
@@ -139,58 +190,21 @@
 	        target: '.bs-docs-sidebar',
 	        offset: 40
 	    });
-      
-      function updateRankings()
+	    
+	    updateRankings("#rankings-sme", "senior", "M", "E");
+	    updateRankings("#rankings-swe", "senior", "W", "E");
+	    updateRankings("#rankings-smf", "senior", "M", "F");
+	    updateRankings("#rankings-swf", "senior", "W", "F");
+	      
+      function updateRankings(element, category, gender, weapon)
       {
-    	  console.log('Updating Rankings');
-    	  var gender = 'M';
-    	  var weapon = 'E';
-    	  var category = 'senior';
-    	  
-    	  if ( $("#option-male").is(':checked') )
-    	  {
-    		  gender = 'M';
-    	  }
-    	  if ( $("#option-female").is(':checked') )
-    	  {
-    		  gender = 'F';
-    	  }
-    	  if ( $("#option-epee").is(':checked') )
-    	  {
-    		  weapon = 'E';
-    	  }
-    	  if ( $("#option-foil").is(':checked') )
-    	  {
-    		  weapon = 'F';
-    	  }
-    	  if ( $("#option-sabre").is(':checked') )
-    	  {
-    		  weapon = 'S';
-    	  }
-    	  if ( $("#option-senior").is(':checked') )
-    	  {
-    		  category = 'senior';
-    	  }
-    	  if ( $("#option-junior").is(':checked') )
-    	  {
-    		  category = 'junior';
-    	  }
-    	  if ( $("#option-cadet").is(':checked') )
-    	  {
-    		  category = 'cadet';
-    	  }
-    	  
-    	  console.log(category + " " + gender + " " + weapon);
-    	  
-    	  $('#ranking-table').empty();
-    	  
     	  $.ajax({
   		    type: "GET",
   			url: "http://api.fencingarchive.net/rankings/" + category + "/" + gender + weapon + "/10",
   			crossDomain: true
   		  }).done( function(xml){
   			$(xml).find('node').each( function() {
-  			  $('#ranking-table').append("<tr><td>" + $(this).find('rank').text() + "</td><td>" + $(this).find('fencer').text() + "</td><td>" + $(this).find('points').text() + "</td></tr>");
+  			  $(element).append("<tr><td>" + $(this).find('rank').text() + "</td><td>" + $(this).find('fencer').text() + "</td><td>" + $(this).find('points').text() + "</td></tr>");
   			})
   		  });
     	  
