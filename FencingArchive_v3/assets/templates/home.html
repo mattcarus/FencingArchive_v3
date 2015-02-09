@@ -86,46 +86,46 @@
       </div>
 
       <div class="row" style="margin-top: 12px;">
-		<div class="col-sm-4">
-			<div class="btn-group btn-group-justified" data-toggle="buttons">
-			  <label class="btn btn-primary rankings-toggle-button active">
-			    <input type="radio" name="options" id="option-male" autocomplete="off" checked>Male
-			  </label>
-			  <label class="btn btn-primary rankings-toggle-button">
-			    <input type="radio" name="options" id="option-female" autocomplete="off">Female
-			  </label>
-			</div>
-			<div class="btn-group btn-group-justified" data-toggle="buttons">
-			  <label class="btn btn-primary rankings-toggle-button active">
-			    <input type="radio" name="options" id="option-epee" autocomplete="off" checked>Epee
-			  </label>
-			  <label class="btn btn-primary rankings-toggle-button">
-			    <input type="radio" name="options" id="option-foil" autocomplete="off">Foil
-			  </label>
-			  <label class="btn btn-primary rankings-toggle-button">
-			    <input type="radio" name="options" id="option-sabre" autocomplete="off">Sabre
-			  </label>
-			</div>
-			<div class="btn-group btn-group-justified" data-toggle="buttons">
-			  <label class="btn btn-primary rankings-toggle-button active">
-			    <input type="radio" name="options" id="option-senior" autocomplete="off" checked>Senior
-			  </label>
-			  <label class="btn btn-primary rankings-toggle-button">
-			    <input type="radio" name="options" id="option-junior" autocomplete="off">Junior
-			  </label>
-			  <label class="btn btn-primary rankings-toggle-button">
-			    <input type="radio" name="options" id="option-cadet" autocomplete="off">Cadet
-			  </label>
-			</div>
-			<div class="panel panel-default">
-			  <div class="panel-body">
-			    <table class="table" id="ranking-table">
-				</table>
-			  </div>
-			</div>
-		</div>
-        <div class="col-sm-8">
-        	<div class="container-fluid" id="recentCompPanels"></div>
+         <!--Side Nav Bar -->
+		    <nav class="col-xs-3 bs-docs-sidebar">
+		        <ul id="sidebar" class="nav nav-stacked fixed">
+		            <li>
+		                <a href="#section-recent-competitions">Recent Competitions</a>
+		            </li>
+		            <li>
+		                <a href="#section-rankings">Rankings</a>
+		                <ul class="nav nav-stacked">
+		                    <li><a href="#section-rankings-senior-mens-epee">Senior Men's Epee</a></li>
+		                    <li><a href="#section-rankings-senior-womens-epee">Senior Women's Epee</a></li>
+		                    <li><a href="#section-rankings-senior-mens-foil">Senior Men's Foil</a></li>
+		                    <li><a href="#section-rankings-senior-womens-foil">Senior Women's Foil</a></li>
+		                    <li><a href="#section-rankings-senior-mens-sabre">Senior Men's Sabre</a></li>
+		                    <li><a href="#section-rankings-senior-womens-sabre">Senior Women's Sabre</a></li>
+		                    <li><a href="#section-rankings-junior-mens-epee">Junior Men's Epee</a></li>
+		                    <li><a href="#section-rankings-junior-womens-epee">Junior Women's Epee</a></li>
+		                    <li><a href="#section-rankings-junior-mens-foil">Junior Men's Foil</a></li>
+		                    <li><a href="#section-rankings-junior-womens-foil">Junior Women's Foil</a></li>
+		                    <li><a href="#section-rankings-junior-mens-sabre">Junior Men's Sabre</a></li>
+		                    <li><a href="#section-rankings-junior-womens-sabre">Junior Women's Sabre</a></li>
+		                    <li><a href="#section-rankings-cadet-mens-epee">Cadet Men's Epee</a></li>
+		                    <li><a href="#section-rankings-cadet-womens-epee">Cadet Women's Epee</a></li>
+		                    <li><a href="#section-rankings-cadet-mens-foil">Cadet Men's Foil</a></li>
+		                    <li><a href="#section-rankings-cadet-womens-foil">Cadet Women's Foil</a></li>
+		                    <li><a href="#section-rankings-cadet-mens-sabre">Cadet Men's Sabre</a></li>
+		                    <li><a href="#section-rankings-cadet-womens-sabre">Cadet Women's Sabre</a></li>
+		                </ul>
+		            </li>
+		        </ul>
+		    </nav>
+		      
+        <div class="col-sm-9">
+            <section id="section-recent-competitions" class="group">
+        		<div class="container-fluid" id="recentCompPanels"></div>
+        	</section>
+        	<section id="section-rankings" class="group">
+        		<div class="subgroup" id="section-rankings-senior-mens-epee">
+        		</div>
+        	</section>
         </div>      
 
       </div><!-- /.row -->
