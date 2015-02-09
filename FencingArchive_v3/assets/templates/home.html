@@ -222,11 +222,11 @@
 				  url: "http://api.fencingarchive.net/competition/" + $(this).text()
 			  }).done( function(compXml){
 				  compDiv = '';
-				  /*
-				  if ( panelCount % 4 == 0 ) {
+				  
+				  if ( panelCount % 3 == 0 ) {
 					  compDiv += '<div class="row">';
 				  }
-				  */
+				  
 				  compDiv += '<div class="col-sm-4"><div class="panel panel-default"><div class="panel-heading">';
 				  compDiv += '<h3 class="panel-title"><a href="http://v3.fencingarchive.net/competition/' + $(compXml).find('cid').text() + '">' + $(compXml).find('full_name').text() + '</a><small><br />' + $(compXml).find('date').text() + '</small></h3>';
 				  compDiv += '</div><div class="panel-body">';
@@ -244,11 +244,11 @@
 				  }).find("fencer_name").text() + '<br />';
 				  
 				  compDiv += '<p class="text-right"><a href="http://v3.fencingarchive.net/competition/' + $(compXml).find('cid').text() + '">Full Results</a></p></div></div></div>';
-				  /*
-				  if ( panelCount % 4 == 0 ) {
+				  
+				  if ( panelCount % 3 == 0 ) {
 					  compDiv += '</div>';
 				  }
-				  */
+				  
 				  $('#recentCompPanels').append(compDiv);
 				  panelCount++;
 			  })
