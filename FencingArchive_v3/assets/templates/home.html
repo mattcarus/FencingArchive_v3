@@ -175,6 +175,8 @@
     		  category = 'cadet';
     	  }
     	  
+    	  $('#ranking-table').empty();
+    	  
     	  $.ajax({
   		    type: "GET",
   			url: "http://api.fencingarchive.net/rankings/" + category + "/" + gender + weapon + "/10",
