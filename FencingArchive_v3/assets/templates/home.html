@@ -87,34 +87,34 @@
 
       <div class="row" style="margin-top: 12px;">
 		<div class="col-sm-4">
-			<div class="btn-group btn-group-justified rankings-toggle-button" data-toggle="buttons">
-			  <label class="btn btn-primary active">
-			    <input type="radio" name="options" id="option-male" class="rankings-toggle-button" autocomplete="off" checked>Male
+			<div class="btn-group btn-group-justified" data-toggle="buttons">
+			  <label class="btn btn-primary rankings-toggle-button active">
+			    <input type="radio" name="options" id="option-male" autocomplete="off" checked>Male
 			  </label>
-			  <label class="btn btn-primary">
-			    <input type="radio" name="options" id="option-female" class="rankings-toggle-button" autocomplete="off">Female
-			  </label>
-			</div>
-			<div class="btn-group btn-group-justified rankings-toggle-button" data-toggle="buttons">
-			  <label class="btn btn-primary active">
-			    <input type="radio" name="options" id="option-epee" class="rankings-toggle-button" autocomplete="off" checked>Epee
-			  </label>
-			  <label class="btn btn-primary">
-			    <input type="radio" name="options" id="option-foil" class="rankings-toggle-button" autocomplete="off">Foil
-			  </label>
-			  <label class="btn btn-primary">
-			    <input type="radio" name="options" id="option-sabre" class="rankings-toggle-button" autocomplete="off">Sabre
+			  <label class="btn btn-primary rankings-toggle-button">
+			    <input type="radio" name="options" id="option-female" autocomplete="off">Female
 			  </label>
 			</div>
-			<div class="btn-group btn-group-justified rankings-toggle-button" data-toggle="buttons">
-			  <label class="btn btn-primary active">
-			    <input type="radio" name="options" id="option-senior" class="rankings-toggle-button" autocomplete="off" checked>Senior
+			<div class="btn-group btn-group-justified" data-toggle="buttons">
+			  <label class="btn btn-primary rankings-toggle-button active">
+			    <input type="radio" name="options" id="option-epee" autocomplete="off" checked>Epee
 			  </label>
-			  <label class="btn btn-primary">
-			    <input type="radio" name="options" id="option-junior" class="rankings-toggle-button" autocomplete="off">Junior
+			  <label class="btn btn-primary rankings-toggle-button">
+			    <input type="radio" name="options" id="option-foil" autocomplete="off">Foil
 			  </label>
-			  <label class="btn btn-primary">
-			    <input type="radio" name="options" id="option-cadet" class="rankings-toggle-button" autocomplete="off">Cadet
+			  <label class="btn btn-primary rankings-toggle-button">
+			    <input type="radio" name="options" id="option-sabre" autocomplete="off">Sabre
+			  </label>
+			</div>
+			<div class="btn-group btn-group-justified" data-toggle="buttons">
+			  <label class="btn btn-primary rankings-toggle-button active">
+			    <input type="radio" name="options" id="option-senior" autocomplete="off" checked>Senior
+			  </label>
+			  <label class="btn btn-primary rankings-toggle-button">
+			    <input type="radio" name="options" id="option-junior" autocomplete="off">Junior
+			  </label>
+			  <label class="btn btn-primary rankings-toggle-button">
+			    <input type="radio" name="options" id="option-cadet" autocomplete="off">Cadet
 			  </label>
 			</div>
 			<div class="panel panel-default">
@@ -134,7 +134,7 @@
 
     <script>
       $.ready(updateRankings());
-      $('.rankings-toggle-button').click(updateRankings());
+      $('.rankings-toggle-button').on('click', updateRankings());
       
       function updateRankings()
       {
