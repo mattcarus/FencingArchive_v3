@@ -59,7 +59,7 @@
 
       <div class="row" style="margin-top: 12px;">
          <!--Side Nav Bar -->
-		    <nav class="col-xs-3 bs-docs-sidebar">
+		    <nav class="col-xs-3 bs-docs-sidebar hidden-xs">
 		        <ul id="sidebar" class="nav nav-stacked fixed">
 		            <li>
 		                <a href="#section-recent-competitions">Recent Competitions</a>
@@ -195,7 +195,7 @@
   			crossDomain: true
   		  }).done( function(xml){
   			$(xml).find('node').each( function() {
-  			  $(element).append("<tr><td>" + $(this).find('rank').text() + "</td><td>" + $(this).find('fencer').text() + "</td><td>" + $(this).find('points').text() + "</td></tr>");
+  			  $(element).append("<tr><td>" + $(this).find('rank').text() + "</td><td>" + $(this).xpath('/fencer/full_name').text() + "</td><td>" + $(this).find('totalPoints').text() + "</td></tr>");
   			})
   		  });
     	  
