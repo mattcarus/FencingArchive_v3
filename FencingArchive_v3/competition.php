@@ -5,6 +5,6 @@
 	 */
 
 	header("HTTP/1.1 301 Moved Permanently");
-	header("Location: http://fencingarchive.net/competition/" . $_GET['id']);
+	header("Location: http://fencingarchive.net/competition/" . $_GET['cid']);
 	
 ?>
