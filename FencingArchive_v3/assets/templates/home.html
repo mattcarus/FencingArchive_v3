@@ -89,32 +89,32 @@
 		<div class="col-sm-4">
 			<div class="btn-group btn-group-justified" data-toggle="buttons">
 			  <label class="btn btn-primary active">
-			    <input type="radio" name="options" id="option-male" autocomplete="off" checked>Male
+			    <input type="radio" name="options" id="option-male" class="rankings-toggle-button" autocomplete="off" checked>Male
 			  </label>
 			  <label class="btn btn-primary">
-			    <input type="radio" name="options" id="option-female" autocomplete="off">Female
+			    <input type="radio" name="options" id="option-female" class="rankings-toggle-button" autocomplete="off">Female
 			  </label>
 			</div>
 			<div class="btn-group btn-group-justified" data-toggle="buttons">
 			  <label class="btn btn-primary active">
-			    <input type="radio" name="options" id="option-epee" autocomplete="off" checked>Epee
+			    <input type="radio" name="options" id="option-epee" class="rankings-toggle-button" autocomplete="off" checked>Epee
 			  </label>
 			  <label class="btn btn-primary">
-			    <input type="radio" name="options" id="option-foil" autocomplete="off">Foil
+			    <input type="radio" name="options" id="option-foil" class="rankings-toggle-button" autocomplete="off">Foil
 			  </label>
 			  <label class="btn btn-primary">
-			    <input type="radio" name="options" id="option-sabre" autocomplete="off">Sabre
+			    <input type="radio" name="options" id="option-sabre" class="rankings-toggle-button" autocomplete="off">Sabre
 			  </label>
 			</div>
 			<div class="btn-group btn-group-justified" data-toggle="buttons">
 			  <label class="btn btn-primary active">
-			    <input type="radio" name="options" id="option-senior" autocomplete="off" checked>Senior
+			    <input type="radio" name="options" id="option-senior" class="rankings-toggle-button" autocomplete="off" checked>Senior
 			  </label>
 			  <label class="btn btn-primary">
-			    <input type="radio" name="options" id="option-junior" autocomplete="off">Junior
+			    <input type="radio" name="options" id="option-junior" class="rankings-toggle-button" autocomplete="off">Junior
 			  </label>
 			  <label class="btn btn-primary">
-			    <input type="radio" name="options" id="option-cadet" autocomplete="off">Cadet
+			    <input type="radio" name="options" id="option-cadet" class="rankings-toggle-button" autocomplete="off">Cadet
 			  </label>
 			</div>
 			<div class="panel panel-default">
@@ -133,6 +133,9 @@
     </div> <!-- /container -->
 
     <script>
+      $.ready(updateRankings());
+      $('.rankings-toggle-button').click(updateRankings());
+      
       function updateRankings()
       {
     	  var gender;
