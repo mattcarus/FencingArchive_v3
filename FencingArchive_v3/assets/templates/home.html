@@ -195,7 +195,7 @@
   			url: "http://api.fencingarchive.net/rankings/" + category + "/" + gender + weapon + "/10",
   			crossDomain: true
   		  }).done( function(xml){
-  			$(xml).find('node').each( function() {
+  			$(xml).xpath('/rankings/rankings/node').each( function() {
   			  $(element).append("<tr><td>" + $(this).find('rank').text() + "</td><td>" + $(this).find('fencer').find('name').text() + "</td><td>" + $(this).find('totalPoints').text() + "</td></tr>");
   			})
   		  });
