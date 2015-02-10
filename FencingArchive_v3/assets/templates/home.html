@@ -202,10 +202,7 @@
 	    });
 	    
 	    setTimeout(function (){
-	    	$('body').scrollspy({
-		        target: '.bs-docs-sidebar',
-		        offset: 40
-		    });
+	    	$('body').scrollspy({ target: '.bs-docs-sidebar', offset: 40 });
 	    }, 3000);
 	    
 	    updateRankings("#rankings-sme", "senior", "M", "E");
@@ -242,6 +239,7 @@
   		  }).done( function(xml){
   			$(xml).xpath('/rankings/rankings/node').each( function() {
   			  $(element).append('<tr><td>' + $(this).find('rank').text() + '</td><td><a href="' + $(this).xpath('fencer/profile_url').text() + '">' + $(this).xpath('fencer/name').text() + '</td><td>' + $(this).find('totalPoints').text() + '</td></tr>');
+  			$('body').scrollspy('refresh');
   			})
   		  });
     	  
@@ -296,6 +294,9 @@
 				  }
 				  
 				  $('#recentCompPanels').append(compDiv);
+				  
+				  $('body').scrollspy('refresh');
+				  
 				  panelCount++;
 			  })
 				
