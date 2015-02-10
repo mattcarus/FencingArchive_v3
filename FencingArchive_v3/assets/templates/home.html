@@ -200,50 +200,7 @@
 	        target: '.bs-docs-sidebar',
 	        offset: 40
 	    });
-	    
-	    setTimeout(function (){
-	    	$('body').scrollspy({ target: '.bs-docs-sidebar', offset: 40 });
-	    }, 3000);
-	    
-	    updateRankings("#rankings-sme", "senior", "M", "E");
-	    updateRankings("#rankings-swe", "senior", "W", "E");
-	    updateRankings("#rankings-smf", "senior", "M", "F");
-	    updateRankings("#rankings-swf", "senior", "W", "F");
-	    updateRankings("#rankings-sms", "senior", "M", "S");
-	    updateRankings("#rankings-sws", "senior", "W", "S");
-	    
-	    setTimeout(function () {
-		    updateRankings("#rankings-jme", "junior", "M", "E");
-		    updateRankings("#rankings-jwe", "junior", "W", "E");
-		    updateRankings("#rankings-jmf", "junior", "M", "F");
-		    updateRankings("#rankings-jwf", "junior", "W", "F");
-		    updateRankings("#rankings-jms", "junior", "M", "S");
-		    updateRankings("#rankings-jws", "junior", "W", "S");
-	    }, 1000);
-	    
-	    setTimeout(function () {
-			updateRankings("#rankings-cme", "cadet", "M", "E");
-		    updateRankings("#rankings-cwe", "cadet", "W", "E");
-		    updateRankings("#rankings-cmf", "cadet", "M", "F");
-		    updateRankings("#rankings-cwf", "cadet", "W", "F");
-		    updateRankings("#rankings-cms", "cadet", "M", "S");
-		    updateRankings("#rankings-cws", "cadet", "W", "S");
-	    }, 2000);
-	    
-      function updateRankings(element, category, gender, weapon)
-      {
-    	  $.ajax({
-  		    type: "GET",
-  			url: "http://api.fencingarchive.net/rankings/" + category + "/" + gender + weapon + "/10",
-  			crossDomain: true
-  		  }).done( function(xml){
-  			$(xml).xpath('/rankings/rankings/node').each( function() {
-  			  $(element).append('<tr><td>' + $(this).find('rank').text() + '</td><td><a href="' + $(this).xpath('fencer/profile_url').text() + '">' + $(this).xpath('fencer/name').text() + '</td><td>' + $(this).find('totalPoints').text() + '</td></tr>');
-  			$('body').scrollspy('refresh');
-  			})
-  		  });
-    	  
-      }
+      
 	  $.ajax({
 		    type: "GET",
 			url: "http://api.fencingarchive.net/query/lastNCompetitionLinks/12",
@@ -354,7 +311,44 @@
 	      displayKey: "page_name",
 	      source: fencingArchiveSearch.ttAdapter()
 	    });
-	  
+		updateRankings("#rankings-sme", "senior", "M", "E");
+		updateRankings("#rankings-swe", "senior", "W", "E");
+		updateRankings("#rankings-smf", "senior", "M", "F");
+		updateRankings("#rankings-swf", "senior", "W", "F");
+		updateRankings("#rankings-sms", "senior", "M", "S");
+		updateRankings("#rankings-sws", "senior", "W", "S");
+		
+		setTimeout(function () {
+		    updateRankings("#rankings-jme", "junior", "M", "E");
+		    updateRankings("#rankings-jwe", "junior", "W", "E");
+		    updateRankings("#rankings-jmf", "junior", "M", "F");
+		    updateRankings("#rankings-jwf", "junior", "W", "F");
+		    updateRankings("#rankings-jms", "junior", "M", "S");
+		    updateRankings("#rankings-jws", "junior", "W", "S");
+		}, 1000);
+		
+		setTimeout(function () {
+			updateRankings("#rankings-cme", "cadet", "M", "E");
+		    updateRankings("#rankings-cwe", "cadet", "W", "E");
+		    updateRankings("#rankings-cmf", "cadet", "M", "F");
+		    updateRankings("#rankings-cwf", "cadet", "W", "F");
+		    updateRankings("#rankings-cms", "cadet", "M", "S");
+		    updateRankings("#rankings-cws", "cadet", "W", "S");
+		}, 2000);
+		
+		function updateRankings(element, category, gender, weapon)
+		{
+		  $.ajax({
+			    type: "GET",
+				url: "http://api.fencingarchive.net/rankings/" + category + "/" + gender + weapon + "/10",
+				crossDomain: true
+			  }).done( function(xml){
+				$(xml).xpath('/rankings/rankings/node').each( function() {
+				  $(element).append('<tr><td>' + $(this).find('rank').text() + '</td><td><a href="' + $(this).xpath('fencer/profile_url').text() + '">' + $(this).xpath('fencer/name').text() + '</td><td>' + $(this).find('totalPoints').text() + '</td></tr>');
+				$('body').scrollspy('refresh');
+				})
+			  });  
+		}	  
     </script>
 
 </body>
