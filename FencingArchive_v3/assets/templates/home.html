@@ -201,27 +201,32 @@
 	        offset: 40
 	    });
 	    
+	    
 	    updateRankings("#rankings-sme", "senior", "M", "E");
 	    updateRankings("#rankings-swe", "senior", "W", "E");
 	    updateRankings("#rankings-smf", "senior", "M", "F");
 	    updateRankings("#rankings-swf", "senior", "W", "F");
 	    updateRankings("#rankings-sms", "senior", "M", "S");
 	    updateRankings("#rankings-sws", "senior", "W", "S");
-	      
-	    updateRankings("#rankings-jme", "junior", "M", "E");
-	    updateRankings("#rankings-jwe", "junior", "W", "E");
-	    updateRankings("#rankings-jmf", "junior", "M", "F");
-	    updateRankings("#rankings-jwf", "junior", "W", "F");
-	    updateRankings("#rankings-jms", "junior", "M", "S");
-	    updateRankings("#rankings-jws", "junior", "W", "S");
-	      
-	    updateRankings("#rankings-cme", "cadet", "M", "E");
-	    updateRankings("#rankings-cwe", "cadet", "W", "E");
-	    updateRankings("#rankings-cmf", "cadet", "M", "F");
-	    updateRankings("#rankings-cwf", "cadet", "W", "F");
-	    updateRankings("#rankings-cms", "cadet", "M", "S");
-	    updateRankings("#rankings-cws", "cadet", "W", "S");
-	      
+	    
+	    setTimeout(function () {
+		    updateRankings("#rankings-jme", "junior", "M", "E");
+		    updateRankings("#rankings-jwe", "junior", "W", "E");
+		    updateRankings("#rankings-jmf", "junior", "M", "F");
+		    updateRankings("#rankings-jwf", "junior", "W", "F");
+		    updateRankings("#rankings-jms", "junior", "M", "S");
+		    updateRankings("#rankings-jws", "junior", "W", "S");
+	    }, 1000);
+	    
+	    setTimeout(function () {
+			updateRankings("#rankings-cme", "cadet", "M", "E");
+		    updateRankings("#rankings-cwe", "cadet", "W", "E");
+		    updateRankings("#rankings-cmf", "cadet", "M", "F");
+		    updateRankings("#rankings-cwf", "cadet", "W", "F");
+		    updateRankings("#rankings-cms", "cadet", "M", "S");
+		    updateRankings("#rankings-cws", "cadet", "W", "S");
+	    }, 2000);
+	    
       function updateRankings(element, category, gender, weapon)
       {
     	  $.ajax({
