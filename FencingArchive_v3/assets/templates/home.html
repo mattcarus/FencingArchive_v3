@@ -196,7 +196,7 @@
   			crossDomain: true
   		  }).done( function(xml){
   			$(xml).find('node').each( function() {
-  			  $(element).append("<tr><td>" + $(this).find('rank').text() + "</td><td>" + $(this).xpath('/fencer/name').text() + "</td><td>" + $(this).find('totalPoints').text() + "</td></tr>");
+  			  $(element).append("<tr><td>" + $(this).find('rank').text() + "</td><td>" + $(this).find('fencer').find('name').text() + "</td><td>" + $(this).find('totalPoints').text() + "</td></tr>");
   			})
   		  });
     	  
