@@ -120,54 +120,71 @@
         			<table class="table" id="rankings-sme"></table>
         		</div>
         		<div class="subgroup" id="section-rankings-senior-womens-epee">
+        			<h2>Senior Men's Epee Rankings</h2>
         			<table class="table" id="rankings-swe"></table>
         		</div>
         		<div class="subgroup" id="section-rankings-senior-mens-foil">
+        			<h2>Senior Men's Epee Rankings</h2>
         			<table class="table" id="rankings-smf"></table>
         		</div>
         		<div class="subgroup" id="section-rankings-senior-womens-foil">
+        			<h2>Senior Men's Epee Rankings</h2>
         			<table class="table" id="rankings-swf"></table>
         		</div>
         		<div class="subgroup" id="section-rankings-senior-mens-sabre">
+        			<h2>Senior Men's Epee Rankings</h2>
         			<table class="table" id="rankings-sms"></table>
         		</div>
         		<div class="subgroup" id="section-rankings-senior-womens-sabre">
+        			<h2>Senior Men's Epee Rankings</h2>
         			<table class="table" id="rankings-sws"></table>
         		</div>
         		<div class="subgroup" id="section-rankings-junior-mens-epee">
+        			<h2>Senior Men's Epee Rankings</h2>
         			<table class="table" id="rankings-jme"></table>
         		</div>
         		<div class="subgroup" id="section-rankings-junior-womens-epee">
+        			<h2>Senior Men's Epee Rankings</h2>
         			<table class="table" id="rankings-jwe"></table>
         		</div>
         		<div class="subgroup" id="section-rankings-junior-mens-foil">
+        			<h2>Senior Men's Epee Rankings</h2>
         			<table class="table" id="rankings-jmf"></table>
         		</div>
         		<div class="subgroup" id="section-rankings-junior-womens-foil">
+        			<h2>Senior Men's Epee Rankings</h2>
         			<table class="table" id="rankings-jwf"></table>
         		</div>
         		<div class="subgroup" id="section-rankings-junior-mens-sabre">
+        			<h2>Senior Men's Epee Rankings</h2>
         			<table class="table" id="rankings-jms"></table>
         		</div>
         		<div class="subgroup" id="section-rankings-junior-womens-sabre">
+        			<h2>Senior Men's Epee Rankings</h2>
         			<table class="table" id="rankings-jws"></table>
         		</div>
         		<div class="subgroup" id="section-rankings-cadet-mens-epee">
+        			<h2>Senior Men's Epee Rankings</h2>
         			<table class="table" id="rankings-cme"></table>
         		</div>
         		<div class="subgroup" id="section-rankings-cadet-womens-epee">
+        			<h2>Senior Men's Epee Rankings</h2>
         			<table class="table" id="rankings-cwe"></table>
         		</div>
         		<div class="subgroup" id="section-rankings-cadet-mens-foil">
+        			<h2>Senior Men's Epee Rankings</h2>
         			<table class="table" id="rankings-cmf"></table>
         		</div>
         		<div class="subgroup" id="section-rankings-cadet-womens-foil">
+        			<h2>Senior Men's Epee Rankings</h2>
         			<table class="table" id="rankings-cwf"></table>
         		</div>
         		<div class="subgroup" id="section-rankings-cadet-mens-sabre">
+        			<h2>Senior Men's Epee Rankings</h2>
         			<table class="table" id="rankings-cms"></table>
         		</div>
         		<div class="subgroup" id="section-rankings-cadet-womens-sabre">
+        			<h2>Senior Men's Epee Rankings</h2>
         			<table class="table" id="rankings-cws"></table>
         		</div>
         		
@@ -188,6 +205,22 @@
 	    updateRankings("#rankings-swe", "senior", "W", "E");
 	    updateRankings("#rankings-smf", "senior", "M", "F");
 	    updateRankings("#rankings-swf", "senior", "W", "F");
+	    updateRankings("#rankings-sms", "senior", "M", "S");
+	    updateRankings("#rankings-sws", "senior", "W", "S");
+	      
+	    updateRankings("#rankings-jme", "junior", "M", "E");
+	    updateRankings("#rankings-jwe", "junior", "W", "E");
+	    updateRankings("#rankings-jmf", "junior", "M", "F");
+	    updateRankings("#rankings-jwf", "junior", "W", "F");
+	    updateRankings("#rankings-jms", "junior", "M", "S");
+	    updateRankings("#rankings-jws", "junior", "W", "S");
+	      
+	    updateRankings("#rankings-cme", "cadet", "M", "E");
+	    updateRankings("#rankings-cwe", "cadet", "W", "E");
+	    updateRankings("#rankings-cmf", "cadet", "M", "F");
+	    updateRankings("#rankings-cwf", "cadet", "W", "F");
+	    updateRankings("#rankings-cms", "cadet", "M", "S");
+	    updateRankings("#rankings-cws", "cadet", "W", "S");
 	      
       function updateRankings(element, category, gender, weapon)
       {
@@ -197,7 +230,7 @@
   			crossDomain: true
   		  }).done( function(xml){
   			$(xml).xpath('/rankings/rankings/node').each( function() {
-  			  $(element).append("<tr><td>" + $(this).find('rank').text() + "</td><td>" + $(this).xpath('fencer/name').text() + "</td><td>" + $(this).find('totalPoints').text() + "</td></tr>");
+  			  $(element).append('<tr><td>' + $(this).find('rank').text() + '</td><td><a href="' + $(this).xpath('fencer/profile_url').text() + '">' + $(this).xpath('fencer/name').text() + '</td><td>' + $(this).find('totalPoints').text() + '</td></tr>');
   			})
   		  });
     	  
