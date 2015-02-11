@@ -101,7 +101,7 @@
 	  }).done( function(xml){
 		console.log("Loaded " + $(xml).find('name').text());		
 		$('#name').html($(xml).xpath('/club/name').text());
-		$('#club-image').html('<img src="' + $(xml).xpath('/club/image_url').text() + '" />');
+		$('#club-image').html('<img src="' + $(xml).xpath('/club/image_url').text() + '" class="img-responsive" />');
 		$('#about').append('<li>Founded: ' + $(xml).xpath('/club/founding_date').text() + '</li>');
 		$('#about').append('<li>Status: ' + $(xml).xpath('/club/status').text() + '</li>');
 		
