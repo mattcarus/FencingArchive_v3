@@ -129,7 +129,7 @@
 		$('#about').append('<li>Category: ' + $(xml).find('category').text() + '</li>');
 		$('#about').append('<li>Date: ' + $(xml).find('date').text() + '</li>');
 		
-		$(xml).find('results').find('node').each(function(){
+		$(xml).xpath('results/node').each(function(){
 			$('#competition-results').append('<tr><td>' + $(this).find('position').text() + '</td><td><a href="' + $(this).xpath('fencer/profile_url').text() + '">' + $(this).xpath('fencer/name').text() + '</a></td></tr>');
 		
 		
