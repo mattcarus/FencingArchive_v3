@@ -15,6 +15,7 @@
     <link href="http://fencingarchive.net/fonts/fencing/fencing.css" rel="stylesheet">
     
 	<script src="http://v3.fencingarchive.net/assets/jquery/js/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="http://v3.fencingarchive.net/assets/jquery/js/jquery.xpath.js"></script>
 	<script src="http://v3.fencingarchive.net/assets/bootstrap/bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
     <script src="//d3js.org/d3.v3.min.js"></script>
     
@@ -129,7 +130,7 @@
 		$('#about').append('<li>Date: ' + $(xml).find('date').text() + '</li>');
 		
 		$(xml).find('results').find('node').each(function(){
-			$('#competition-results').append('<tr><td>' + $(this).find('position').text() + '</td><td><a href="' + $(this).find('fencer').find('profile_url').text() + '">' + $(this).find('fencer').find('name').text() + '</a></td></tr>');
+			$('#competition-results').append('<tr><td>' + $(this).find('position').text() + '</td><td><a href="' + $(this).xpath('fencer/profile_url').text() + '">' + $(this).xpath('fencer/name').text() + '</a></td></tr>');
 		
 		
 		});
