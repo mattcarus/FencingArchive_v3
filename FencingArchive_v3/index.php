@@ -172,7 +172,7 @@ $app->get('/series/:id', function ($id) {
 
 $app->get('/rankings/:category/:weapon', function ($category, $weapon) {
   global $twig;
-  echo $twig->render('rankings.html', array('category' => $id, 'weapon' => $weapon));
+  echo $twig->render('rankings.html', array('category' => $category, 'weapon' => $weapon));
 });
 
 $app->get('/search/:term', function ($term) {
