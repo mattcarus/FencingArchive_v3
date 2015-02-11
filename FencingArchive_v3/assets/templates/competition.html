@@ -129,8 +129,7 @@
 		$('#about').append('<li>Date: ' + $(xml).find('date').text() + '</li>');
 		
 		$(xml).find('results').find('node').each(function(){
-			var pageUrl = 'http://v3.fencingarchive.net/fencer/' + $(this).find('fid').text();
-			$('#competition-results').append('<tr><td>' + $(this).find('position').text() + '</td><td><a href="' + pageUrl + '">' + $(this).find('fencer_name').text() + '</a></td></tr>');
+			$('#competition-results').append('<tr><td>' + $(this).find('position').text() + '</td><td><a href="' + $(this).find('fencer').find('profile_url').text() + '">' + $(this).find('fencer').find('name').text() + '</a></td></tr>');
 		
 		
 		});
