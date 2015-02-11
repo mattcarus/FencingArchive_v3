@@ -63,30 +63,22 @@
     <div class="container theme-showcase" role="main">
 
       <div class="page-header">
-        <h1><span id="name"><!-- Club Name --></span></h1>
+        <h1><span id="name"><!-- Rankings Name --></span></h1>
       </div>
       
       <div class="row">
         <div class="col-sm-3" id='info-panels'>
             <div class="panel panel-default">
-			  <div class="panel-body" id="club-image" style="text-align: center;">
-			  </div>
-  			</div>
-            <div class="panel panel-default">
               <div class="panel-heading">
                 <h3 class="panel-title">About</h3>
               </div>
               <div class="panel-body">
-                <ul class="unstyled-list" id="about"><!-- Club Details --></ul>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-body" id="club-map">
+                <ul class="unstyled-list" id="about"><!-- Rankings Details --></ul>
               </div>
             </div>
         </div><!-- /.col-sm-4 -->
         <div class="col-sm-9">
-          <table class="table" id="club-members"><!-- Club Members -->
+          <table class="table" id="rankings-table"><!-- Club Members -->
           </table>
 		</div>
       </div>
@@ -99,31 +91,18 @@
 	    type: "GET",
 		url: "http://api.fencingarchive.net/rankings/{{ category }}/{{ weapon }}"
 	  }).done( function(xml){
-		console.log("Loaded " + $(xml).find('name').text());		
-		$('#name').html($(xml).xpath('/club/name').text());
-		$('#club-image').html('<img src="' + $(xml).xpath('/club/image_url').text() + '" class="img-responsive" />');
+		$('#name').html($(xml).xpath('/rankings/name').text());
 		$('#about').append('<li>Founded: ' + $(xml).xpath('/club/founding_date').text() + '</li>');
 		$('#about').append('<li>Status: ' + $(xml).xpath('/club/status').text() + '</li>');
-		
-		initializeMap($(xml).xpath('/club/latitude').text(), $(xml).xpath('/club/longitude').text());
 		
 		if ( $(xml).xpath('/club/url').text() != "" ) {
 			$('#info-panels').append('<a href="' + $(xml).xpath('/club/url').text() + '" class="btn btn-default btn-block" role="button">Visit Website</a');
 		}
 		
-		$(xml).find('members').find('fencer').each(function(){
-			$('#club-members').append('<tr><td><a href="' + $(this).xpath('profile_url').text() + '">' + $(this).xpath('name').text() + '</a></td></tr>')
+		$(xml).xpath('/rankings/rankings/node').each(function(){
+			$('#rankings-table').append('<tr><td>' + $(this).xpath('rank').text() + '</td><td><a href="' + $(this).xpath('fencer/profile_url').text() + '">' + $(this).xpath('fencer/name').text() + '</a></td><td>' + $(this).xpath('totalPoints').text() + '</td></tr>')
 		});
 	  });
-
-	  function initializeMap(lat, lng) {
-		var mapOptions = {
-		  zoom: 8,
-		  center: new google.maps.LatLng(lat, lng)
-		};
-
-		var map = new google.maps.Map(document.getElementById('club-map'), mapOptions);
-	  }
     </script>
 </body>
 </html>
