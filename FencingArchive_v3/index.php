@@ -170,6 +170,11 @@ $app->get('/series/:id', function ($id) {
   echo $twig->render('series.html', array('id' => $id));
 });
 
+$app->get('/rankings/:category/:weapon', function ($category, $weapon) {
+  global $twig;
+  echo $twig->render('rankings.html', array('category' => $id, 'weapon' => $weapon));
+});
+
 $app->get('/search/:term', function ($term) {
 	global $twig;
 	echo $twig->render('search.html', array('term' => $term));

@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title></title>
+    
+    <link href="http://v3.fencingarchive.net/assets/bootstrap/bootstrap-3.1.1-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://v3.fencingarchive.net/assets/style/fencingarchive.css" rel="stylesheet">
+    <link href="http://v3.fencingarchive.net/assets/style/teamgb.css" rel="stylesheet">
+    <link href="http://v3.fencingarchive.net/assets/socicon/socicon.css" rel="stylesheet">
+    <link href="http://fencingarchive.net/fonts/fencing/fencing.css" rel="stylesheet">
+    
+	<script src="http://v3.fencingarchive.net/assets/jquery/js/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="http://v3.fencingarchive.net/assets/jquery/js/jquery.xpath.js"></script>
+	<script src="http://v3.fencingarchive.net/assets/bootstrap/bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+    <script src="//d3js.org/d3.v3.min.js"></script>
+    
+    <script src="http://mattcarus.co.uk/track.js" type="text/javascript"></script>
+    
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWCT25lyZHF1ZJ5XgJaBxks8KuC7ahaoM"></script>
+    
+    <style>
+      #club-map {
+        height: 200px;
+      }
+    </style>
+</head>
+
+<body role="document">
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://fencingarchive.net/"><i class="icon-three-arms"></i>FencingArchive</a>
+        </div>
+        
+        <div class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right" role="form" onSubmit="var pageUrl='http://v3.fencingarchive.net/search/' + encodeURI($('#searchTerm').val()); window.location=pageUrl; return false;">
+            <div class="form-inline form-group">
+              <input type="text" placeholder="Search" class="form-control typeahead" id="searchTerm">
+            </div>
+            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search"></span></button>
+          </form>
+          <p class="nav navbar-nav navbar-right" style="text-align: center; margin-top: 8px; margin-bottom: 8px;">&nbsp;&nbsp;<a href="https://twitter.com/share?text=#fencingarchive:&url={{ url }}"><span class="socicon">a</span></a>
+            &nbsp;&nbsp;<a href="http://www.facebook.com/sharer.php?u={{ url }}"><span class="socicon">b</span></a>
+            &nbsp;&nbsp;<a href="https://plus.google.com/share?hl=en-GB&url={{ url }}"><span class="socicon">c</span></a>&nbsp;&nbsp;</p>
+          
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    
+    <div class="container theme-showcase" role="main">
+
+      <div class="page-header">
+        <h1><span id="name"><!-- Club Name --></span></h1>
+      </div>
+      
+      <div class="row">
+        <div class="col-sm-3" id='info-panels'>
+            <div class="panel panel-default">
+			  <div class="panel-body" id="club-image" style="text-align: center;">
+			  </div>
+  			</div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">About</h3>
+              </div>
+              <div class="panel-body">
+                <ul class="unstyled-list" id="about"><!-- Club Details --></ul>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-body" id="club-map">
+              </div>
+            </div>
+        </div><!-- /.col-sm-4 -->
+        <div class="col-sm-9">
+          <table class="table" id="club-members"><!-- Club Members -->
+          </table>
+		</div>
+      </div>
+    </div> <!-- /container -->
+
+
+  <div id="name"></div>
+    <script>
+	  $.ajax({
+	    type: "GET",
+		url: "http://api.fencingarchive.net/rankings/{{ category }}/{{ weapon }}"
+	  }).done( function(xml){
+		console.log("Loaded " + $(xml).find('name').text());		
+		$('#name').html($(xml).xpath('/club/name').text());
+		$('#club-image').html('<img src="' + $(xml).xpath('/club/image_url').text() + '" class="img-responsive" />');
+		$('#about').append('<li>Founded: ' + $(xml).xpath('/club/founding_date').text() + '</li>');
+		$('#about').append('<li>Status: ' + $(xml).xpath('/club/status').text() + '</li>');
+		
+		initializeMap($(xml).xpath('/club/latitude').text(), $(xml).xpath('/club/longitude').text());
+		
+		if ( $(xml).xpath('/club/url').text() != "" ) {
+			$('#info-panels').append('<a href="' + $(xml).xpath('/club/url').text() + '" class="btn btn-default btn-block" role="button">Visit Website</a');
+		}
+		
+		$(xml).find('members').find('fencer').each(function(){
+			$('#club-members').append('<tr><td><a href="' + $(this).xpath('profile_url').text() + '">' + $(this).xpath('name').text() + '</a></td></tr>')
+		});
+	  });
+
+	  function initializeMap(lat, lng) {
+		var mapOptions = {
+		  zoom: 8,
+		  center: new google.maps.LatLng(lat, lng)
+		};
+
+		var map = new google.maps.Map(document.getElementById('club-map'), mapOptions);
+	  }
+    </script>
+</body>
+</html>
